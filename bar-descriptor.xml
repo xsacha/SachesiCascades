@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+
+   Copyright (c) 2011-2014 BlackBerry Limited.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+<qnx xmlns="http://www.qnx.com/schemas/application/1.0">
+
+    <id>com.Qtness.SachesiCascades</id>
+    <configuration name="Device-Debug">
+       <platformArchitecture>armle-v7</platformArchitecture>
+       <asset path="arm/o.le-v7-g/SachesiCascades" entry="true" type="Qnx/Elf">SachesiCascades</asset>
+    </configuration>
+    <configuration name="Device-Release">
+       <entryPointType>Qnx/Cascades</entryPointType>
+       <platformArchitecture>armle-v7</platformArchitecture>
+       <asset path="arm/o.le-v7/SachesiCascades.so" entry="true" type="Qnx/Elf">SachesiCascades.so</asset>
+    </configuration>
+    <configuration name="Device-Profile">
+       <platformArchitecture>armle-v7</platformArchitecture>
+       <asset path="arm-p/o.le-v7-g/SachesiCascades" entry="true" type="Qnx/Elf">SachesiCascades</asset>
+    </configuration>
+    <configuration name="Simulator-Debug">
+       <platformArchitecture>x86</platformArchitecture>
+       <asset path="x86/o-g/SachesiCascades" entry="true" type="Qnx/Elf">SachesiCascades</asset>
+    </configuration>
+
+    <name>Sachesi</name>
+
+    <versionNumber>1.1.2</versionNumber>
+
+    <!-- Fourth digit segment of the package version. First three segments are taken from the
+         <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->
+    <buildId>1</buildId>
+
+    <!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
+    <!-- <versionLabel></versionLabel> -->
+
+    <description>Tool of convenience</description>
+
+    <!-- Copyright information. Optional. -->
+    <!-- <copyright></copyright> -->
+
+    <icon>
+       <image>icon.png</image>
+       <image>icon-90.png</image>
+       <image>icon-96.png</image>
+       <image>icon-110.png</image>
+       <image>icon-144.png</image>
+    </icon>
+    <platformVersion>10.3.0</platformVersion>
+    <authorId>gYAAgGE4qaHzBnzEAu8JKe4G1OI</authorId>
+    <author>Qtness</author>
+
+    <initialWindow>
+        <autoOrients>true</autoOrients>
+        <systemChrome>none</systemChrome>
+    </initialWindow>
+
+    <!--  The icon for the application, which should be 114x114. -->
+
+
+    <!-- Locale support -->
+    <asset path="translations" dest="qm">
+        <include name="*.qm"/>
+    </asset>
+    <asset path="assets">assets</asset>
+    <asset path="icon.png">icon.png</asset>
+    <asset path="icon-90.png">icon-90.png</asset>
+    <asset path="icon-96.png">icon-96.png</asset>
+    <asset path="icon-110.png">icon-110.png</asset>
+    <asset path="icon-144.png">icon-144.png</asset>
+
+    <!-- Request permission to execute native code.  Required for native applications. -->
+    <permission system="true">run_native</permission>
+    <permission>access_internet</permission>
+    <permission>access_shared</permission>
+    <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
+    <env var="CASCADES_THEME" value="dark"/>
+    
+    <invoke-target id="com.Qtness.Sachesi">
+        <invoke-target-type>application</invoke-target-type>
+		<icon>
+      		<image>icon.png</image>
+	    </icon>
+        <filter>
+        	<action>bb.action.VIEW</action>
+            <action>bb.action.OPEN</action>
+            <mime-type>*</mime-type>
+            <property var="uris" value="sachesi:"/>
+        </filter>
+    </invoke-target>
+
+</qnx>
