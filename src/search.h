@@ -4,7 +4,15 @@
 #include <QObject>
 #include <bb/cascades/DataModel>
 
+#include "updatebundles.h"
 #include "worldapps.h"
+
+enum SearchType {
+    SearchIdle,
+    SearchBundles,
+    SearchUpdate,
+    SearchScanner,
+};
 
 class Search : public QObject {
     Q_OBJECT
@@ -15,10 +23,13 @@ class Search : public QObject {
     Q_PROPERTY(int     scanning READ scanning WRITE setScanning NOTIFY scanningChanged)
     Q_PROPERTY(int     maxId READ maxId NOTIFY maxIdChanged)
     Q_PROPERTY(bb::cascades::DataModel* appList READ appList NOTIFY updateMessageChanged)
+    Q_PROPERTY(bb::cascades::DataModel* bundleList READ bundleList NOTIFY bundleListChanged)
 
 public:
     Search(QObject* parent = 0);
-    Q_INVOKABLE void updateDetailRequest(int carrier, int country, int device);
+    Q_INVOKABLE void availableBundleRequest(int country, int carrier, int device);
+    Q_INVOKABLE void fromBundleRequest(int country, int carrier, int device, int variant, QString OSver);
+    Q_INVOKABLE void updateDetailRequest(int carrier, int country, int device, int variant = -1, QString OSver = "");
     Q_INVOKABLE void grabLinks();
 
     Q_INVOKABLE QString nameFromVariant(unsigned int device, unsigned int variant);
@@ -37,8 +48,11 @@ public:
     bb::cascades::DataModel* appList() {
         return new bb::cascades::QListDataModel<AppWorldApps*>(_updateAppList);
     }
+    bb::cascades::DataModel* bundleList() {
+            return new bb::cascades::QListDataModel<UpdateBundles*>(_updateBundlesList);
+        }
 
-    signals:
+signals:
     void softwareReleaseChanged();
     void updateMessageChanged();
     void errorChanged();
@@ -47,8 +61,12 @@ public:
     void hasPotentialLinksChanged();
     void maxIdChanged();
     void appListChanged();
-    private slots:
+    void bundleListChanged();
+
+private slots:
+    void bundleReply();
     void serverReply();
+    void fromBundleToUpdateReply();
     void showFirmwareData(QByteArray data, QString variant);
     void serverError(QNetworkReply::NetworkError error);
 
@@ -57,6 +75,7 @@ public:
 
     QNetworkAccessManager *manager;
     QList<AppWorldApps*> _updateAppList;
+    QList<UpdateBundles*> _updateBundlesList;
     QString _updateMessage;
     QString _softwareRelease;
     QString _versionRelease;
@@ -67,4 +86,5 @@ public:
     int _maxId, _dlBytes, _dlTotal;
     int _options;
     int _type;
+    SearchType _searchType;
 };

@@ -56,6 +56,7 @@ ApplicationUI::ApplicationUI() :
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
     qmlRegisterType<AppWorldApps>();
+    qmlRegisterType<UpdateBundles>();
     qmlRegisterType<WebImageView>("org.labsquare", 1, 0, "WebImageView");
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
     qml->setContextProperty("world", &world);

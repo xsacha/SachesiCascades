@@ -12,7 +12,7 @@ Page {
     }
     actions: [
         ActionItem {
-            title: "Grab Links"
+            title: qsTr("Grab Links") + Retranslate.onLocaleOrLanguageChanged
             enabled: search.updateMessage != ""
             onTriggered: search.grabLinks()
             ActionBar.placement: ActionBarPlacement.Signature
@@ -31,8 +31,7 @@ Page {
             textStyle.fontSize: FontSize.Large
         }
         ActivityIndicator {
-            visible: search.scanning
-            running: parent.visible
+            running: search.scanning
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
         }

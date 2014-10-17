@@ -116,11 +116,11 @@
     </message>
     <message>
         <source>OS: %1</source>
-        <translation>操作系统：%1</translation>
+        <translation type="obsolete">操作系统：%1</translation>
     </message>
     <message>
         <source>Radio: %1</source>
-        <translation>收音机：％1</translation>
+        <translation type="obsolete">收音机：％1</translation>
     </message>
     <message>
         <source>Error</source>
@@ -138,6 +138,25 @@
         <source>No updates available.</source>
         <translation>没有可用的更新.</translation>
     </message>
+    <message>
+        <source>Scanner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchBundles</name>
+    <message>
+        <source>Available Bundles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest</source>
+        <translation type="unfinished">最新</translation>
+    </message>
 </context>
 <context>
     <name>SearchResults</name>
@@ -152,6 +171,21 @@
     <message>
         <source>MB</source>
         <translation>MB</translation>
+    </message>
+    <message>
+        <source>Grab Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchScanner</name>
+    <message>
+        <source>Version Scanner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Autoscan</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -238,6 +272,13 @@
     <message>
         <source>Apps</source>
         <translation>应用</translation>
+    </message>
+</context>
+<context>
+    <name>searchBundles</name>
+    <message>
+        <source>Latest</source>
+        <translation type="obsolete">最新</translation>
     </message>
 </context>
 </TS>

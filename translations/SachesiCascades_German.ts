@@ -116,11 +116,11 @@
     </message>
     <message>
         <source>OS: %1</source>
-        <translation>BS: %1</translation>
+        <translation type="obsolete">BS: %1</translation>
     </message>
     <message>
         <source>Radio: %1</source>
-        <translation>Radio: %1</translation>
+        <translation type="obsolete">Radio: %1</translation>
     </message>
     <message>
         <source>Error</source>
@@ -138,6 +138,25 @@
         <source>No updates available.</source>
         <translation>Keine aktualisieren verfügbar.</translation>
     </message>
+    <message>
+        <source>Scanner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchBundles</name>
+    <message>
+        <source>Available Bundles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest</source>
+        <translation type="unfinished">Neuestes</translation>
+    </message>
 </context>
 <context>
     <name>SearchResults</name>
@@ -152,6 +171,21 @@
     <message>
         <source>MB</source>
         <translation>MB</translation>
+    </message>
+    <message>
+        <source>Grab Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchScanner</name>
+    <message>
+        <source>Version Scanner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Autoscan</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -238,6 +272,13 @@
     <message>
         <source>Apps</source>
         <translation>Apps</translation>
+    </message>
+</context>
+<context>
+    <name>searchBundles</name>
+    <message>
+        <source>Latest</source>
+        <translation type="obsolete">Neuestes</translation>
     </message>
 </context>
 </TS>

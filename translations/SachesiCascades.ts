@@ -115,14 +115,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>OS: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Radio: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -138,6 +130,25 @@
         <source>No updates available.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Scanner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchBundles</name>
+    <message>
+        <source>Available Bundles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchResults</name>
@@ -151,6 +162,21 @@
     </message>
     <message>
         <source>MB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Grab Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchScanner</name>
+    <message>
+        <source>Version Scanner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Autoscan</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

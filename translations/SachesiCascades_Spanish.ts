@@ -120,11 +120,11 @@
     </message>
     <message>
         <source>OS: %1</source>
-        <translation>SO: %1</translation>
+        <translation type="obsolete">SO: %1</translation>
     </message>
     <message>
         <source>Radio: %1</source>
-        <translation>Radio: %1</translation>
+        <translation type="obsolete">Radio: %1</translation>
     </message>
     <message>
         <source>Error</source>
@@ -142,6 +142,25 @@
         <source>No updates available.</source>
         <translation>No hay actualizaciones disponibles.</translation>
     </message>
+    <message>
+        <source>Scanner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchBundles</name>
+    <message>
+        <source>Available Bundles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latest</source>
+        <translation type="unfinished">Últimas</translation>
+    </message>
 </context>
 <context>
     <name>SearchResults</name>
@@ -156,6 +175,21 @@
     <message>
         <source>MB</source>
         <translation>MB</translation>
+    </message>
+    <message>
+        <source>Grab Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchScanner</name>
+    <message>
+        <source>Version Scanner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Autoscan</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -242,6 +276,13 @@
     <message>
         <source>Search</source>
         <translation>Buscar</translation>
+    </message>
+</context>
+<context>
+    <name>searchBundles</name>
+    <message>
+        <source>Latest</source>
+        <translation type="obsolete">Últimas</translation>
     </message>
 </context>
 </TS>

@@ -11,21 +11,48 @@ NavigationPane {
         }
         actions: [
             ActionItem {
+                title: qsTr("Latest Update") + Retranslate.onLocaleOrLanguageChanged
+                ActionBar.placement: ActionBarPlacement.OnBar
+                onTriggered: {
+                    search.updateDetailRequest(carrierPicker.selectedValue, countryPicker.selectedValue, deviceSelector.selectedIndex)
+                    var page = resultsDefinition.createObject();
+                    navPane.push(page);
+                }
+            },
+            ActionItem {
                 title: qsTr("Search") + Retranslate.onLocaleOrLanguageChanged
                 imageSource: "asset:///search.png"
                 ActionBar.placement: ActionBarPlacement.Signature
                 backgroundColor: ui.palette.plainBase
                 onTriggered: {
-                    search.updateDetailRequest(carrierPicker.selectedValue, countryPicker.selectedValue, deviceSelector.selectedIndex)
-                    var page = pageDefinition.createObject();
+                    search.availableBundleRequest(carrierPicker.selectedValue, countryPicker.selectedValue, deviceSelector.selectedIndex)
+                    var page = bundlesDefinition.createObject();
+                    navPane.push(page);
+                }
+            },
+            ActionItem {
+                title: qsTr("Scanner") + Retranslate.onLocaleOrLanguageChanged
+                ActionBar.placement: ActionBarPlacement.OnBar
+                onTriggered: {
+                    var page = scannerDefinition.createObject();
                     navPane.push(page);
                 }
             }
         ]
-        attachedObjects: ComponentDefinition {
-            id: pageDefinition;
-            source: "SearchResults.qml"
-        }
+        attachedObjects: [
+            ComponentDefinition {
+                id: bundlesDefinition;
+                source: "SearchBundles.qml"
+            },
+            ComponentDefinition {
+                id: resultsDefinition;
+                source: "SearchResults.qml"
+            },
+            ComponentDefinition {
+                id: scannerDefinition;
+                source: "SearchScanner.qml"
+            }
+        ]
         Container {
             horizontalAlignment: HorizontalAlignment.Fill
             Picker {

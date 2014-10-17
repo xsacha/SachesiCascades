@@ -1,5 +1,5 @@
 1
-8
+10
 main.qml
 TopMenu.qml
 Search.qml
@@ -8,3 +8,5 @@ search.png
 back.png
 SearchResults.qml
 AppWorld.qml
+SearchScanner.qml
+SearchBundles.qml
