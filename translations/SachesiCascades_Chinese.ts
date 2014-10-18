@@ -140,22 +140,22 @@
     </message>
     <message>
         <source>Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描仪</translation>
     </message>
     <message>
         <source>Latest Update</source>
-        <translation type="unfinished"></translation>
+        <translation>最新更新</translation>
     </message>
 </context>
 <context>
     <name>SearchBundles</name>
     <message>
         <source>Available Bundles</source>
-        <translation type="unfinished"></translation>
+        <translation>可用包</translation>
     </message>
     <message>
         <source>Latest</source>
-        <translation type="unfinished">最新</translation>
+        <translation>最新</translation>
     </message>
 </context>
 <context>
@@ -174,17 +174,41 @@
     </message>
     <message>
         <source>Grab Links</source>
-        <translation type="unfinished"></translation>
+        <translation>抢链接</translation>
     </message>
 </context>
 <context>
     <name>SearchScanner</name>
     <message>
         <source>Version Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描版</translation>
+    </message>
+    <message>
+        <source>Lookup</source>
+        <translation>查找</translation>
     </message>
     <message>
         <source>Autoscan</source>
+        <translation>自动扫描</translation>
+    </message>
+    <message>
+        <source>OS Version</source>
+        <translation>OS版本</translation>
+    </message>
+    <message>
+        <source>Find only existing links</source>
+        <translation>只找到现有链接</translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Software Release: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OS: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -228,15 +252,15 @@
     </message>
     <message>
         <source>Production</source>
-        <translation>产品</translation>
+        <translation>产品版</translation>
     </message>
     <message>
         <source>Enterprise</source>
-        <translation>企业</translation>
+        <translation>企业版</translation>
     </message>
     <message>
         <source>Eval</source>
-        <translation>评价</translation>
+        <translation>评价版</translation>
     </message>
     <message>
         <source>OS</source>

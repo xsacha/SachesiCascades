@@ -2,7 +2,8 @@
 #include <bb/system/SystemDialog>
 #include <bb/system/SystemToast>
 
-// TODO: Connect Bundles to Results
+// TODO: Make bundles look prettier
+//       Add icons
 //       Create Scanner
 
 Search::Search(QObject* parent)
@@ -11,6 +12,7 @@ Search::Search(QObject* parent)
 , _softwareRelease("")
 , _versionRelease("")
 , _scanning(0)
+, _autoscan(0)
 {
     manager = new QNetworkAccessManager();
 }
@@ -166,6 +168,47 @@ void Search::bundleReply() {
     reply->deleteLater();
 }
 
+void Search::reverseLookup(QString OSver) {
+    _searchType = SearchScanner;
+    QString requestUrl = "https://cs.sl.blackberry.com/cse/srVersionLookup/2.0/";
+    QString query = QString("<srVersionLookupRequest version=\"2.0.0\" authEchoTS=\"%1\">"
+            "<clientProperties>"
+            "<hardware><pin>0x2FFFFFB3</pin><bsn>1140011878</bsn><id>0x%2</id></hardware>"
+            "<software><osVersion>%3</osVersion></software>"
+            "</clientProperties>"
+            "</srVersionLookupRequest>")
+                        .arg(QDateTime::currentMSecsSinceEpoch())
+                        .arg(hwidFromVariant(4, 0))
+                        .arg(OSver);
+    QNetworkRequest request;
+    request.setRawHeader("Content-Type", "text/xml;charset=UTF-8");
+    request.setUrl(QUrl(requestUrl));
+    QNetworkReply* reply = manager->post(request, query.toUtf8());
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
+            this, SLOT(serverError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(newSRVersion()));
+}
+
+void Search::newSRVersion() {
+    QNetworkReply* reply = (QNetworkReply*)sender();
+    bool skip = reply->request().attribute(QNetworkRequest::CustomVerbAttribute).toBool();
+    QString swRelease;
+    QByteArray data = reply->readAll();
+    //for (int i = 0; i < data.size(); i += 3000) qDebug() << data.mid(i, 3000);
+    QXmlStreamReader xml(data);
+    while(!xml.atEnd() && !xml.hasError()) {
+        if(xml.tokenType() == QXmlStreamReader::StartElement) {
+            if (xml.name() == "softwareReleaseVersion") {
+                swRelease = xml.readElementText();
+            }
+        }
+        xml.readNext();
+    }
+    _softwareRelease = swRelease; emit softwareReleaseChanged();
+    setScanning(_scanning - 1);
+    reply->deleteLater();
+}
+
 void Search::fromBundleRequest(int country, int carrier, int device, int variant, QString OSver)
 {
     QString requestUrl = "https://cs.sl.blackberry.com/cse/srVersionLookup/2.0/";
@@ -187,7 +230,6 @@ void Search::fromBundleRequest(int country, int carrier, int device, int variant
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
             this, SLOT(serverError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(fromBundleToUpdateReply()));
-
 }
 
 void Search::fromBundleToUpdateReply() {
@@ -459,6 +501,14 @@ void Search::setScanning(const int &scanning) {
             qSort(_updateAppList.begin(), _updateAppList.end(), compareUpdate);
             emit updateMessageChanged();
         }
+        if (_searchType == SearchScanner) {
+            if (_softwareRelease.startsWith("10") || _softwareRelease != "SR not in system")
+                setAutoscan(0);
+            else {
+                emit scanningChanged();
+                return;
+            }
+        }
         // Check if we have have no updates
         if (_searchType != SearchIdle &&
                 ((_searchType == SearchUpdate && _updateMessage == "")
@@ -472,4 +522,12 @@ void Search::setScanning(const int &scanning) {
         _searchType = SearchIdle;
     }
     _scanning = scanning; emit scanningChanged();
+}
+
+void Search::setAutoscan(const int &autoscan) {
+    if (autoscan) {
+        setScanning(1);
+    }
+    _autoscan = autoscan;
+    emit autoscanChanged();
 }

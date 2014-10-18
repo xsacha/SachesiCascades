@@ -275,8 +275,7 @@ public:
         if (reply->size() > 0 && (status == 200 || (status > 300 && status <= 308))) {
             QXmlStreamReader xml(reply->readAll());
             QString curType;
-            foreach(AppWorldApps* app, _appList)
-            app->deleteLater();
+            foreach (AppWorldApps* app, _appList) app->deleteLater();
             _appList.clear();
             _more.clear(); emit moreChanged();
             while(!xml.atEnd() && !xml.hasError()) {
@@ -294,6 +293,17 @@ public:
                                 app->setId(xml.attributes().value("url").toString());
                             }
                             else {
+                                // Check if this ID already exists and then skip
+                                bool exists = false;
+                                foreach (AppWorldApps* appobj, _appList) {
+                                    if (appobj->id() == xml.attributes().value("id").toString())
+                                        exists = true;
+                                }
+                                if (exists) {
+                                    delete app;
+                                    xml.readNext();
+                                    continue;
+                                }
                                 app->setType(curType);
                                 app->setName(xml.attributes().value("name").toString());
                                 app->setId(xml.attributes().value("id").toString());

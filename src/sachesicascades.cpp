@@ -15,6 +15,7 @@ using namespace bb::cascades;
 #include <Qt/qdeclarativedebug.h>
 #include "WebImageView.h"
 #include "codepicker.h"
+#include "ospicker.h"
 
 using namespace bb::cascades;
 
@@ -49,6 +50,7 @@ ApplicationUI::ApplicationUI() :
     QObject::connect(m_pLocaleHandler, SIGNAL(systemLanguageChanged()), this, SLOT(onSystemLanguageChanged()));
 
     qmlRegisterType<CodePickerProvider>("custom.pickers", 1, 0, "CodePickerProvider");
+    qmlRegisterType<OSPickerProvider>("custom.pickers", 1, 0, "OSPickerProvider");
 
     // initial load
     onSystemLanguageChanged();

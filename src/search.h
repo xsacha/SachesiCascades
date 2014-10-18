@@ -17,16 +17,19 @@ enum SearchType {
 class Search : public QObject {
     Q_OBJECT
     Q_PROPERTY(QString updateMessage READ updateMessage NOTIFY updateMessageChanged)
+    Q_PROPERTY(QString softwareRelease READ softwareRelease NOTIFY softwareReleaseChanged)
     Q_PROPERTY(QString error READ error NOTIFY errorChanged)
     Q_PROPERTY(QString multiscanVersion READ multiscanVersion NOTIFY updateMessageChanged)
     Q_PROPERTY(bool    multiscan READ multiscan WRITE setMultiscan NOTIFY multiscanChanged)
     Q_PROPERTY(int     scanning READ scanning WRITE setScanning NOTIFY scanningChanged)
+    Q_PROPERTY(int     autoscan READ autoscan WRITE setAutoscan NOTIFY autoscanChanged)
     Q_PROPERTY(int     maxId READ maxId NOTIFY maxIdChanged)
     Q_PROPERTY(bb::cascades::DataModel* appList READ appList NOTIFY updateMessageChanged)
     Q_PROPERTY(bb::cascades::DataModel* bundleList READ bundleList NOTIFY bundleListChanged)
 
 public:
     Search(QObject* parent = 0);
+    Q_INVOKABLE void reverseLookup(QString OSver);
     Q_INVOKABLE void availableBundleRequest(int country, int carrier, int device);
     Q_INVOKABLE void fromBundleRequest(int country, int carrier, int device, int variant, QString OSver);
     Q_INVOKABLE void updateDetailRequest(int carrier, int country, int device, int variant = -1, QString OSver = "");
@@ -38,12 +41,15 @@ public:
 
     void    setMultiscan(const bool &multiscan);
     void    setScanning(const int &scanning);
+    void    setAutoscan(const int &autoscan);
 
     QString updateMessage() const { return _updateMessage; }
+    QString softwareRelease() const { return _softwareRelease; }
     QString error() const { return _error; }
     QString multiscanVersion() const { return _multiscanVersion; }
     bool multiscan() const { return _multiscan; }
     int scanning() const { return _scanning; }
+    int autoscan() const { return _autoscan; }
     int maxId() const { return _maxId; }
     bb::cascades::DataModel* appList() {
         return new bb::cascades::QListDataModel<AppWorldApps*>(_updateAppList);
@@ -58,12 +64,14 @@ signals:
     void errorChanged();
     void multiscanChanged();
     void scanningChanged();
+    void autoscanChanged();
     void hasPotentialLinksChanged();
     void maxIdChanged();
     void appListChanged();
     void bundleListChanged();
 
 private slots:
+    void newSRVersion();
     void bundleReply();
     void serverReply();
     void fromBundleToUpdateReply();
@@ -82,7 +90,7 @@ private slots:
     QString _error;
     QString _multiscanVersion;
     bool _multiscan;
-    int _scanning;
+    int _scanning, _autoscan;
     int _maxId, _dlBytes, _dlTotal;
     int _options;
     int _type;

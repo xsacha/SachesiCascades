@@ -144,22 +144,22 @@
     </message>
     <message>
         <source>Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscador</translation>
     </message>
     <message>
         <source>Latest Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Últimas Actualización</translation>
     </message>
 </context>
 <context>
     <name>SearchBundles</name>
     <message>
         <source>Available Bundles</source>
-        <translation type="unfinished"></translation>
+        <translation>Disponible Paquete</translation>
     </message>
     <message>
         <source>Latest</source>
-        <translation type="unfinished">Últimas</translation>
+        <translation>Últimas</translation>
     </message>
 </context>
 <context>
@@ -178,17 +178,41 @@
     </message>
     <message>
         <source>Grab Links</source>
-        <translation type="unfinished"></translation>
+        <translation>Obtener Enlaces</translation>
     </message>
 </context>
 <context>
     <name>SearchScanner</name>
     <message>
         <source>Version Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Examinar Versión</translation>
+    </message>
+    <message>
+        <source>Lookup</source>
+        <translation>Búsqueda</translation>
     </message>
     <message>
         <source>Autoscan</source>
+        <translation>Autoexaminar</translation>
+    </message>
+    <message>
+        <source>OS Version</source>
+        <translation>SO Versión</translation>
+    </message>
+    <message>
+        <source>Find only existing links</source>
+        <translation>Encontrar sólo enlaces existentes</translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Software Release: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OS: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

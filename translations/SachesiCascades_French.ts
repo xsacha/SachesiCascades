@@ -188,7 +188,31 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Lookup</source>
+        <translation type="unfinished">Recherche</translation>
+    </message>
+    <message>
         <source>Autoscan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OS Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Find only existing links</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checking...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Software Release: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OS: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
