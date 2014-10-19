@@ -146,6 +146,10 @@
         <source>Latest Update</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>VersionLookup</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchBundles</name>
@@ -204,11 +208,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Software Release: </source>
+        <source>OS: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>OS: </source>
+        <source>Release not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Found: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generate Links</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -284,7 +296,11 @@
     </message>
     <message>
         <source>Coming Soon</source>
-        <translation>Kommt Bald</translation>
+        <translation type="obsolete">Kommt Bald</translation>
+    </message>
+    <message>
+        <source>Search Mode</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

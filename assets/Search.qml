@@ -12,6 +12,7 @@ NavigationPane {
         actions: [
             ActionItem {
                 title: qsTr("Latest Update") + Retranslate.onLocaleOrLanguageChanged
+                imageSource: "asset:///star.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     search.updateDetailRequest(carrierPicker.selectedValue, countryPicker.selectedValue, deviceSelector.selectedIndex)
@@ -32,6 +33,7 @@ NavigationPane {
             },
             ActionItem {
                 title: qsTr("Scanner") + Retranslate.onLocaleOrLanguageChanged
+                imageSource: "asset:///radar.png"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     var page = scannerDefinition.createObject();
@@ -133,5 +135,10 @@ NavigationPane {
             }
         }
     }
-    onPopTransitionEnded: page.destroy();
+    onPopTransitionEnded: {
+        // If Scanner gets popped while autoscanning, turn it off.
+        if (page.objectName == "scanner")
+            search.autoscan = 0
+        page.destroy();
+    }
 }

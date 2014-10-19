@@ -1,5 +1,5 @@
 1
-10
+12
 main.qml
 TopMenu.qml
 Search.qml
@@ -10,3 +10,5 @@ SearchResults.qml
 AppWorld.qml
 SearchScanner.qml
 SearchBundles.qml
+star.png
+radar.png

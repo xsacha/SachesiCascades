@@ -12,24 +12,22 @@ Search::Search(QObject* parent)
 , _softwareRelease("")
 , _versionRelease("")
 , _scanning(0)
+, _hasPotentialLinks(0)
 , _autoscan(0)
+, _searchMode(0)
 {
     manager = new QNetworkAccessManager();
 }
 
-void Search::grabLinks() {
-    QString updated;
-    foreach (AppWorldApps* app, _updateAppList) {
-        updated.append(app->packageId() + "\n");
-    }
-
+void Search::writeDisplayFile(QString type, QString writeText)
+{
     QString dir = "shared/misc/Sachesi/";
     QDir(dir).mkpath(".");
-    QString name = dir + tr("Links") + ".txt";
+    QString name = dir + type + ".txt";
     QFile links(name);
     if (!links.open(QIODevice::WriteOnly)) {
         bb::system::SystemDialog* dialog = new bb::system::SystemDialog();
-        dialog->setTitle(tr("Unable to display ") + tr("Links"));
+        dialog->setTitle(tr("Unable to display ") + type);
         dialog->setBody(tr("The permission 'Shared Files' is required to create and display the links. Please enable this permission, restart the application and try again."));
         dialog->exec();
         if (dialog->buttonSelection() == dialog->confirmButton()) {
@@ -38,9 +36,18 @@ void Search::grabLinks() {
         dialog->deleteLater();
         return;
     }
-    links.write(updated.toLocal8Bit());
+    links.write(writeText.toUtf8());
     links.close();
     QDesktopServices::openUrl(QUrl::fromLocalFile(QString("/accounts/1000/") + name));
+}
+
+void Search::grabLinks() {
+    QString updated;
+    foreach (AppWorldApps* app, _updateAppList) {
+        updated.append(app->packageId() + "\n");
+    }
+
+    writeDisplayFile(tr("Links"), updated);
 }
 
 QString Search::NPCFromLocale(int carrier, int country) {
@@ -168,7 +175,9 @@ void Search::bundleReply() {
     reply->deleteLater();
 }
 
-void Search::reverseLookup(QString OSver) {
+void Search::reverseLookup(QString OSver, bool skip) {
+    setScanning(1);
+    _hasPotentialLinks = 0; emit hasPotentialLinksChanged();
     _searchType = SearchScanner;
     QString requestUrl = "https://cs.sl.blackberry.com/cse/srVersionLookup/2.0/";
     QString query = QString("<srVersionLookupRequest version=\"2.0.0\" authEchoTS=\"%1\">"
@@ -183,6 +192,7 @@ void Search::reverseLookup(QString OSver) {
     QNetworkRequest request;
     request.setRawHeader("Content-Type", "text/xml;charset=UTF-8");
     request.setUrl(QUrl(requestUrl));
+    request.setAttribute(QNetworkRequest::CustomVerbAttribute, skip);
     QNetworkReply* reply = manager->post(request, query.toUtf8());
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
             this, SLOT(serverError(QNetworkReply::NetworkError)));
@@ -204,8 +214,49 @@ void Search::newSRVersion() {
         }
         xml.readNext();
     }
-    _softwareRelease = swRelease; emit softwareReleaseChanged();
-    setScanning(_scanning - 1);
+
+    if (!swRelease.isEmpty() && swRelease.at(0).isDigit()) {
+        QCryptographicHash hash(QCryptographicHash::Sha1);
+        hash.addData(swRelease.toLocal8Bit());
+        QString hashResult = hash.result().toHex();
+        foreach(QString server, QStringList() << "production" << "betazone") {
+            QString url = "http://cdn.fs.sl.blackberry.com/fs/qnx/" + server + "/" + QString(hash.result().toHex());
+            QNetworkRequest request;
+            request.setRawHeader("Content-Type", "text/xml;charset=UTF-8");
+            request.setUrl(QUrl(url));
+            request.setAttribute(QNetworkRequest::CustomVerbAttribute, QString::number(skip) + "+" + swRelease + "+" + (server == "production" ? "1" : "2"));
+            QNetworkReply* replyTmp = manager->head(request);
+            connect(replyTmp, SIGNAL(finished()), this, SLOT(validateDownload()));
+        }
+    } else {
+        setScanning(_scanning - 1);
+        _softwareRelease = ""; emit softwareReleaseChanged();
+        _softwareRelease = swRelease; emit softwareReleaseChanged();
+    }
+    reply->deleteLater();
+}
+
+void Search::validateDownload()
+{
+    QNetworkReply* reply = (QNetworkReply*)sender();
+    // This check ensures we don't conflict with a different server results
+    if (!_softwareRelease.startsWith("10") || !_hasPotentialLinks) {
+        // Qt4 requires we pass it like this (skip.swRelease.server)
+        QStringList components = reply->request().attribute(QNetworkRequest::CustomVerbAttribute).toString().split('+');
+        bool skip = components.at(0).toInt();
+        // New SW release found
+        _softwareRelease = components.at(1);
+        uint status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toUInt();
+        // Seems to give 301 redirect if it's real
+        if (status == 200 || (status > 300 && status <= 308)) {
+            _hasPotentialLinks = components.at(2).toInt(); emit hasPotentialLinksChanged();
+        } else if (skip) {
+            // Instead of using version, report 'not in system' so that it is skipped
+            _softwareRelease = "SR not in system";
+        }
+        emit softwareReleaseChanged();
+        setScanning(0);
+    }
     reply->deleteLater();
 }
 
@@ -257,7 +308,6 @@ void Search::fromBundleToUpdateReply() {
 
 void Search::updateDetailRequest(int country, int carrier, int device, int variant, QString SRver)
 {
-    QString up = "upgrade";
     QString requestUrl = "https://cs.sl.blackberry.com/cse/updateDetails/2.2/";
     QString version = "2.2.1";
 
@@ -299,7 +349,7 @@ void Search::updateDetailRequest(int country, int carrier, int device, int varia
                                 .arg(QDateTime::currentMSecsSinceEpoch()) // Current time, in case it cares one day
                                 .arg(hwidFromVariant(device, i)) // Search Device HWID
                                 .arg(homeNPC) // Country + Carrier
-                                .arg(up) // Upgrade or Repair?
+                                .arg(_searchMode ? "repair" : "upgrade")
                                 // 2.3.0 doesn't support 'latest'. Does this mean we need to do availableBundles lookup first?
                                 .arg(SRver != "" ? SRver : "latest");
 
@@ -442,13 +492,77 @@ void Search::showFirmwareData(QByteArray data, QString variant)
     }
 }
 
+void appendNewHeader(QString *potentialText, QString name, QString devices) {
+    potentialText->append("\n" + name + ": " + devices + " (Debrick + Core OS)\n");
+}
+
+void appendNewLink(QString *potentialText, QString hashval, int hasPotentialLinks, QString linkType, int type, bool OMAP, QString hwType, QString version) {
+    QString typeString;
+    if (type == 2) {
+        potentialText->append(linkType + " IFS\n");
+        typeString = "qcfm.ifs.";
+    } else if (type == 1) {
+        typeString = "coreos.qcfm.os.";
+    } else if (type == 0) {
+        potentialText->append(linkType + " Radio\n");
+        typeString = "qcfm.radio.";
+    }
+    potentialText->append(QString("http://cdn.fs.sl.blackberry.com/fs/qnx/%1/%2/com.qnx.%3")
+                         .arg(hasPotentialLinks == 1 ? "production" : "betazone")
+                         .arg(hashval)
+                         .arg(typeString));
+    if (OMAP) // Old Playbook style
+        potentialText->append("factory" + hwType + "/" + version + "/winchester.factory_sfi" + hwType + "-" + version + "-nto+armle-v7+signed.bar\n");
+    else
+        potentialText->append(hwType + "/" + version + "/" + hwType + "-" + version + "-nto+armle-v7+signed.bar\n");
+}
+
+
+void Search::generatePotentialLinks(QString osVersion) {
+    QCryptographicHash hash(QCryptographicHash::Sha1);
+    hash.addData(_softwareRelease.toLocal8Bit());
+    QString hashval = QString(hash.result().toHex());
+    QStringList parts = osVersion.split('.');
+    // Just a guess that the Radio is +1. In some builds this isn't true.
+    int build = parts.last().toInt() + 1;
+    QString radioVersion = "";
+    for (int i = 0; i < 3; i++)
+        radioVersion += parts.at(i) + ".";
+    radioVersion += QString::number(build);
+
+    QString potentialText = QString("Potential OS and Radio links for SR" + _softwareRelease + " (OS:" + osVersion + " + Radio:" + radioVersion + ")\n\n"
+                                        "* Operating Systems *\n");
+    appendNewHeader(&potentialText, "QC8974", "Blackberry Passport");
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Debrick", 1, false, "qc8974.factory_sfi.desktop", osVersion);
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Core",    1, false, "qc8974.factory_sfi", osVersion);
+
+    appendNewHeader(&potentialText, "QC8960", "Blackberry Z3/Z10/Z30/Q5/Q10");
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Debrick", 1, false, "qc8960.factory_sfi.desktop", osVersion);
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Core",    1, false, "qc8960.factory_sfi", osVersion);
+
+    appendNewHeader(&potentialText, "OMAP", "Blackberry Z10 STL 100-1");
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Debrick", 1, true, ".desktop", osVersion);
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Core",    1, true, "", osVersion);
+
+    potentialText.append("\n\n* Radios *\n");
+    // Touch
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Z30 + Classic", 0, false, "qc8960.wtr5", radioVersion);
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Z10 (STL 100-1)",   0, false, "m5730", radioVersion);
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Z10 (STL 100-2/3/4) and Porsche P9982", 0, false, "qc8960", radioVersion);
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Z3 (Jakarta) + Cafe", 0, false, "qc8930.wtr5", radioVersion);
+    // QWERTY
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Passport + Ontario", 0, false, "qc8974.wtr2", radioVersion);
+    appendNewLink(&potentialText, hashval, _hasPotentialLinks, "Q5 + Q10 + Khan", 0, false, "qc8960.wtr", radioVersion);
+    writeDisplayFile(tr("VersionLookup"), potentialText);
+}
+
 void Search::serverError(QNetworkReply::NetworkError err)
 {
     // Only show error if we are doing single scan or multiscan version is empty.
     if (!_multiscan || (_multiscanVersion == "" && _scanning == 1)) {
         QString errormsg = QString(tr("Error") + " %1 (%2)")
-                                                                                                                                                                                                                .arg(err)
-                                                                                                                                                                                                                .arg( ((QNetworkReply*)sender())->errorString() );
+                           .arg(err)
+                           .arg( ((QNetworkReply*)sender())->errorString() );
         _error = errormsg;
         emit errorChanged();
         _updateMessage = ""; emit updateMessageChanged();
@@ -502,11 +616,8 @@ void Search::setScanning(const int &scanning) {
             emit updateMessageChanged();
         }
         if (_searchType == SearchScanner) {
-            if (_softwareRelease.startsWith("10") || _softwareRelease != "SR not in system")
+            if (_autoscan && _softwareRelease.startsWith("10")) {
                 setAutoscan(0);
-            else {
-                emit scanningChanged();
-                return;
             }
         }
         // Check if we have have no updates
@@ -525,9 +636,6 @@ void Search::setScanning(const int &scanning) {
 }
 
 void Search::setAutoscan(const int &autoscan) {
-    if (autoscan) {
-        setScanning(1);
-    }
     _autoscan = autoscan;
     emit autoscanChanged();
 }

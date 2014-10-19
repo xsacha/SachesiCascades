@@ -48,12 +48,25 @@ MenuDefinition {
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
                     layout: DockLayout {}
-                    visible: activeTab.objectName != "appTab"
+                    visible: activeTab.objectName == "searchTab"
                     Label {
                         horizontalAlignment: HorizontalAlignment.Center
-                        verticalAlignment: VerticalAlignment.Center
-                        text: qsTr("Coming Soon") + Retranslate.onLocaleOrLanguageChanged
+                        text: qsTr("Settings") + Retranslate.onLocaleOrLanguageChanged
                         textStyle.fontSize: FontSize.XLarge
+                    }
+                    DropDown {
+                        id: modeSelect
+                        title: qsTr("Search Mode") + Retranslate.onLocaleOrLanguageChanged
+                        selectedIndex: search.searchMode
+                        onSelectedIndexChanged: if (search.searchMode != selectedIndex) search.searchMode = selectedIndex
+                        options: [
+                            Option {
+                                text: "Upgrade"
+                            },
+                            Option {
+                                text: "Debrick"
+                            }
+                        ]
                     }
                 }
                 Container {
