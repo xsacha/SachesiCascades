@@ -13,7 +13,7 @@ Page {
             title: qsTr("Lookup") + Retranslate.onLocaleOrLanguageChanged
             imageSource: "asset:///search.png"
             ActionBar.placement: ActionBarPlacement.OnBar
-            onTriggered: search.reverseLookup(osPicker.selectedValue)
+            onTriggered: search.reverseLookup(osPicker.selectedValue, findExisting.checked)
         },
         ActionItem {
             title: qsTr("Autoscan") + Retranslate.onLocaleOrLanguageChanged
@@ -21,13 +21,11 @@ Page {
             backgroundColor: ui.palette.plainBase
             property string swRelease: search.softwareRelease
             onSwReleaseChanged: {
-                if (search.softwareRelease != "") {
-                    if (search.autoscan && search.softwareRelease.indexOf("SR") == 0) {
+                if (!search.scanning && search.softwareRelease != "") {
+                    if (search.autoscan && search.softwareRelease.indexOf("10") != 0) {
                         search.reverseLookup(osPicker.incBuild(), findExisting.checked)
                     }
-                    if (search.softwareRelease.indexOf("10") == 0 || search.softwareRelease.indexOf("SR") == 0) {
-                        osPicker.lastWorkingOS = osPicker.selectedValue
-                    }
+                    osPicker.lastWorkingOS = osPicker.selectedValue
                 }
             }
             onTriggered: { search.autoscan = !search.autoscan; search.reverseLookup(osPicker.incBuild(), findExisting.checked) }
@@ -45,7 +43,7 @@ Page {
                     var osString = selectedValue
                     var oldfourth = selectedIndex(4) % 10;
                     select(4, 10 + ((oldfourth + (10-3)) % 10), ScrollAnimation.Smooth)
-                    if (oldfourth <= 3) {
+                    if (oldfourth < 3) {
                         var oldthird = selectedIndex(3) % 10;
                         select(3, 10 + ((oldthird + (10-1)) % 10), ScrollAnimation.Smooth)
                         if (oldthird >= 9) {
@@ -119,11 +117,11 @@ Page {
                 Label {
                     visible: search.scanning
                     text: qsTr("Checking...")
-                    textStyle.fontSize: FontSize.XLarge
+                    textStyle.fontSize: FontSize.XXLarge
                     horizontalAlignment: HorizontalAlignment.Center
                 }
                 Label {
-                    visible: search.softwareRelease != ""
+                    visible: !search.scanning && search.softwareRelease != ""
                     text: {
                         if (search.softwareRelease.indexOf("10") == 0)
                             return qsTr("Found: ") + search.softwareRelease

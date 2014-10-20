@@ -290,6 +290,14 @@
         <source>Search Mode</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Upgrade</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Debrick</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>main</name>

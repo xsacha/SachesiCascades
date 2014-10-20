@@ -61,10 +61,10 @@ MenuDefinition {
                         onSelectedIndexChanged: if (search.searchMode != selectedIndex) search.searchMode = selectedIndex
                         options: [
                             Option {
-                                text: "Upgrade"
+                                text: qsTr("Upgrade")
                             },
                             Option {
-                                text: "Debrick"
+                                text: qsTr("Debrick")
                             }
                         ]
                     }
@@ -128,7 +128,7 @@ MenuDefinition {
                                 text: qsTr("Latest") + Retranslate.onLocaleOrLanguageChanged
                             },
                             Option {
-                                text: "10.2.0"        
+                                text: "10.2.1"
                             },
                             Option {
                                 text: "10.1.0"

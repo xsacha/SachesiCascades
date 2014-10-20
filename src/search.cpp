@@ -11,8 +11,8 @@ Search::Search(QObject* parent)
 , _updateMessage("")
 , _softwareRelease("")
 , _versionRelease("")
-, _scanning(0)
 , _hasPotentialLinks(0)
+, _scanning(0)
 , _autoscan(0)
 , _searchMode(0)
 {
@@ -176,10 +176,11 @@ void Search::bundleReply() {
 }
 
 void Search::reverseLookup(QString OSver, bool skip) {
-    setScanning(1);
+    // If we only want real links, we're only going to want the server we can download from
+    setScanning(skip ? 1 : 3);
     _hasPotentialLinks = 0; emit hasPotentialLinksChanged();
+    _softwareRelease = "SR not in system";
     _searchType = SearchScanner;
-    QString requestUrl = "https://cs.sl.blackberry.com/cse/srVersionLookup/2.0/";
     QString query = QString("<srVersionLookupRequest version=\"2.0.0\" authEchoTS=\"%1\">"
             "<clientProperties>"
             "<hardware><pin>0x2FFFFFB3</pin><bsn>1140011878</bsn><id>0x%2</id></hardware>"
@@ -191,12 +192,18 @@ void Search::reverseLookup(QString OSver, bool skip) {
                         .arg(OSver);
     QNetworkRequest request;
     request.setRawHeader("Content-Type", "text/xml;charset=UTF-8");
-    request.setUrl(QUrl(requestUrl));
     request.setAttribute(QNetworkRequest::CustomVerbAttribute, skip);
-    QNetworkReply* reply = manager->post(request, query.toUtf8());
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
-            this, SLOT(serverError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(newSRVersion()));
+    QStringList serverList = QStringList("cs.sl");
+    if (!skip) {
+        serverList << "beta2.sl.eval" << "alpha2.sl.eval";
+    }
+    foreach(QString server, serverList) {
+        request.setUrl(QUrl(QString("https://%1.blackberry.com/slscse/srVersionLookup/2.0/").arg(server)));
+        QNetworkReply* reply = manager->post(request, query.toUtf8());
+        connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
+                this, SLOT(serverError(QNetworkReply::NetworkError)));
+        connect(reply, SIGNAL(finished()), this, SLOT(newSRVersion()));
+    }
 }
 
 void Search::newSRVersion() {
@@ -215,7 +222,7 @@ void Search::newSRVersion() {
         xml.readNext();
     }
 
-    if (!swRelease.isEmpty() && swRelease.at(0).isDigit()) {
+    if (swRelease != _softwareRelease && !swRelease.isEmpty() && swRelease.at(0).isDigit()) {
         QCryptographicHash hash(QCryptographicHash::Sha1);
         hash.addData(swRelease.toLocal8Bit());
         QString hashResult = hash.result().toHex();
@@ -230,8 +237,10 @@ void Search::newSRVersion() {
         }
     } else {
         setScanning(_scanning - 1);
-        _softwareRelease = ""; emit softwareReleaseChanged();
-        _softwareRelease = swRelease; emit softwareReleaseChanged();
+        if (!swRelease.startsWith("10")) {
+            _softwareRelease = ""; emit softwareReleaseChanged();
+            _softwareRelease = swRelease; emit softwareReleaseChanged();
+        }
     }
     reply->deleteLater();
 }
@@ -240,22 +249,32 @@ void Search::validateDownload()
 {
     QNetworkReply* reply = (QNetworkReply*)sender();
     // This check ensures we don't conflict with a different server results
-    if (!_softwareRelease.startsWith("10") || !_hasPotentialLinks) {
+    if (!_hasPotentialLinks) {
         // Qt4 requires we pass it like this (skip.swRelease.server)
+        setScanning(_scanning - 1);
         QStringList components = reply->request().attribute(QNetworkRequest::CustomVerbAttribute).toString().split('+');
         bool skip = components.at(0).toInt();
         // New SW release found
-        _softwareRelease = components.at(1);
+        if (!_softwareRelease.startsWith("10")) {
+            _softwareRelease = ""; emit softwareReleaseChanged();
+            _softwareRelease = components.at(1);
+        }
         uint status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toUInt();
         // Seems to give 301 redirect if it's real
         if (status == 200 || (status > 300 && status <= 308)) {
             _hasPotentialLinks = components.at(2).toInt(); emit hasPotentialLinksChanged();
+            if (_autoscan) {
+                setAutoscan(0);
+            }
         } else if (skip) {
             // Instead of using version, report 'not in system' so that it is skipped
             _softwareRelease = "SR not in system";
+        } else {
+            if (_autoscan) {
+                setAutoscan(0);
+            }
         }
         emit softwareReleaseChanged();
-        setScanning(0);
     }
     reply->deleteLater();
 }
@@ -559,7 +578,7 @@ void Search::generatePotentialLinks(QString osVersion) {
 void Search::serverError(QNetworkReply::NetworkError err)
 {
     // Only show error if we are doing single scan or multiscan version is empty.
-    if (!_multiscan || (_multiscanVersion == "" && _scanning == 1)) {
+    if ((_searchType == SearchUpdate || _searchType == SearchBundles) && (!_multiscan || (_multiscanVersion == "" && _scanning == 1))) {
         QString errormsg = QString(tr("Error") + " %1 (%2)")
                            .arg(err)
                            .arg( ((QNetworkReply*)sender())->errorString() );
@@ -568,6 +587,7 @@ void Search::serverError(QNetworkReply::NetworkError err)
         _updateMessage = ""; emit updateMessageChanged();
     }
     setScanning(_scanning-1);
+    sender()->deleteLater();
 }
 
 void Search::setMultiscan(const bool &multiscan) {
@@ -615,11 +635,6 @@ void Search::setScanning(const int &scanning) {
             qSort(_updateAppList.begin(), _updateAppList.end(), compareUpdate);
             emit updateMessageChanged();
         }
-        if (_searchType == SearchScanner) {
-            if (_autoscan && _softwareRelease.startsWith("10")) {
-                setAutoscan(0);
-            }
-        }
         // Check if we have have no updates
         if (_searchType != SearchIdle &&
                 ((_searchType == SearchUpdate && _updateMessage == "")
@@ -632,7 +647,7 @@ void Search::setScanning(const int &scanning) {
         }
         _searchType = SearchIdle;
     }
-    _scanning = scanning; emit scanningChanged();
+    _scanning = qMax(0, scanning); emit scanningChanged();
 }
 
 void Search::setAutoscan(const int &autoscan) {
