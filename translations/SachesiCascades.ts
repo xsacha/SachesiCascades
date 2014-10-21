@@ -81,6 +81,48 @@
     </message>
 </context>
 <context>
+    <name>Scanner</name>
+    <message>
+        <source>VersionLookup</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScannerHistory</name>
+    <message>
+        <source>Scan History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SR: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Search</name>
     <message>
         <source>Search</source>
@@ -107,19 +149,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unable to display </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Update %1 (%2 | %3) is available for %4!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -136,10 +170,6 @@
     </message>
     <message>
         <source>Latest Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>VersionLookup</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -192,27 +222,51 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Find only existing links</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OS: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Release not found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Found: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Generate Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scanning...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Servers: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop on:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next Found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next Existing Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -296,6 +350,17 @@
     </message>
     <message>
         <source>Debrick</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Utils</name>
+    <message>
+        <source>Unable to display </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

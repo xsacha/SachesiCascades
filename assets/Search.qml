@@ -136,9 +136,8 @@ NavigationPane {
         }
     }
     onPopTransitionEnded: {
-        // If Scanner gets popped while autoscanning, turn it off.
-        if (page.objectName == "scanner")
-            search.autoscan = 0
+        // If Scanner gets popped while autoscanning, turn it off?
+        // if (page.objectName == "scanner")
         page.destroy();
     }
 }

@@ -14,8 +14,8 @@ using namespace bb::cascades;
 
 #include <Qt/qdeclarativedebug.h>
 #include "WebImageView.h"
-#include "codepicker.h"
-#include "ospicker.h"
+#include "search/codepicker.h"
+#include "search/ospicker.h"
 
 using namespace bb::cascades;
 
@@ -40,8 +40,8 @@ Q_DECL_EXPORT int main(int argc, char **argv)
 }
 
 
-ApplicationUI::ApplicationUI() :
-                                        QObject(), world()
+ApplicationUI::ApplicationUI()
+    : QObject(), world(), carrier(), search(), scanner()
 {
     // prepare the localization
     m_pTranslator = new QTranslator(this);
@@ -58,12 +58,14 @@ ApplicationUI::ApplicationUI() :
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
     qmlRegisterType<AppWorldApps>();
+    qmlRegisterType<DiscoveredRelease>();
     qmlRegisterType<UpdateBundles>();
     qmlRegisterType<WebImageView>("org.labsquare", 1, 0, "WebImageView");
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
     qml->setContextProperty("world", &world);
     qml->setContextProperty("carrier", &carrier);
     qml->setContextProperty("search", &search);
+    qml->setContextProperty("scanner", &scanner);
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();

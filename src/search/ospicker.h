@@ -12,6 +12,7 @@ namespace bb { namespace cascades {
         OSPickerProvider() {}
         virtual ~OSPickerProvider() {};
         VisualNode * createItem(Picker * pickerList, int columnIndex) {
+            Q_UNUSED(pickerList);
             Container * returnItem = Container::create().layout(new DockLayout());
             Label * desc = Label::create().objectName("desc");
             desc->setHorizontalAlignment(HorizontalAlignment::Center);
@@ -26,7 +27,8 @@ namespace bb { namespace cascades {
             return returnItem;
         }
         void updateItem(Picker * pickerList, int columnIndex, int rowIndex, VisualNode * pickerItem) {
-            Container * container = (Container *)pickerItem;
+            Q_UNUSED(pickerList);
+            //Container * container = (Container *)pickerItem;
             Label * desc = pickerItem->findChild<Label *>("desc");
             if (columnIndex == 0)
                 desc->setText(QString("10.%1.").arg(rowIndex));
@@ -55,6 +57,7 @@ namespace bb { namespace cascades {
             }
         }
         QVariant value(Picker * picker, const QList<int> & indices) const {
+            Q_UNUSED(picker);
             QString val = QString("10.%1.%2.%3%4%5").arg(indices.value(0)).arg(indices.value(1) % 5).arg(indices.value(2)).arg(indices.value(3) % 10).arg(indices.value(4) % 10);
 
             return QVariant(val);

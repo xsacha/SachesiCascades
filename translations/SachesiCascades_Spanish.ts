@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="es_CO">
+<TS version="2.1" language="es_CO">
 <context>
     <name>AppWorld</name>
     <message>
@@ -81,6 +81,48 @@
     </message>
 </context>
 <context>
+    <name>Scanner</name>
+    <message>
+        <source>VersionLookup</source>
+        <translation>VersiónBúsqueda</translation>
+    </message>
+</context>
+<context>
+    <name>ScannerHistory</name>
+    <message>
+        <source>Scan History</source>
+        <translation>Historia de Análisis</translation>
+    </message>
+    <message>
+        <source>SR: </source>
+        <translation>SR: </translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation>Producción</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation>Beta</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation>Alfa</translation>
+    </message>
+    <message>
+        <source>No history</source>
+        <translation>No hay historial</translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation>Limpiar</translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation>SO: </translation>
+    </message>
+</context>
+<context>
     <name>Search</name>
     <message>
         <source>Search</source>
@@ -112,7 +154,7 @@
     </message>
     <message>
         <source>Unable to display </source>
-        <translation>No se puede mostrar </translation>
+        <translation type="obsolete">No se puede mostrar </translation>
     </message>
     <message>
         <source>Update %1 (%2 | %3) is available for %4!</source>
@@ -132,7 +174,7 @@
     </message>
     <message>
         <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
-        <translation>Se requiere el permiso &quot;Archivos compartidos&quot; para crear y mostrar los vínculos. Por favor, activa este permiso, reinicie la aplicación y vuelva a intentarlo.</translation>
+        <translation type="obsolete">Se requiere el permiso &quot;Archivos compartidos&quot; para crear y mostrar los vínculos. Por favor, activa este permiso, reinicie la aplicación y vuelva a intentarlo.</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -149,10 +191,6 @@
     <message>
         <source>Latest Update</source>
         <translation>Últimas Actualización</translation>
-    </message>
-    <message>
-        <source>VersionLookup</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -205,27 +243,55 @@
     </message>
     <message>
         <source>Find only existing links</source>
-        <translation>Encontrar sólo enlaces existentes</translation>
-    </message>
-    <message>
-        <source>Checking...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OS: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Release not found</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Encontrar sólo enlaces existentes</translation>
     </message>
     <message>
         <source>Found: </source>
-        <translation type="unfinished"></translation>
+        <translation>Encontrado: </translation>
     </message>
     <message>
         <source>Generate Links</source>
-        <translation type="unfinished"></translation>
+        <translation>Generar Enlaces</translation>
+    </message>
+    <message>
+        <source>Scanning...</source>
+        <translation>Búsqueda...</translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation>Producción</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation>Beta</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation>Alfa</translation>
+    </message>
+    <message>
+        <source>Servers: </source>
+        <translation>Servidors: </translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>Historia</translation>
+    </message>
+    <message>
+        <source>Stop on:</source>
+        <translation>Deje en:</translation>
+    </message>
+    <message>
+        <source>Next Found</source>
+        <translation>Siguiente Encontrado</translation>
+    </message>
+    <message>
+        <source>Next Existing Links</source>
+        <translation>Próximos Enlaces Existentes</translation>
+    </message>
+    <message>
+        <source>Never</source>
+        <translation>Nunca</translation>
     </message>
 </context>
 <context>
@@ -304,15 +370,26 @@
     </message>
     <message>
         <source>Search Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modo de Búsqueda</translation>
     </message>
     <message>
         <source>Upgrade</source>
-        <translation type="unfinished"></translation>
+        <translation>mejorar</translation>
     </message>
     <message>
         <source>Debrick</source>
-        <translation type="unfinished"></translation>
+        <translation>Reparación</translation>
+    </message>
+</context>
+<context>
+    <name>Utils</name>
+    <message>
+        <source>Unable to display </source>
+        <translation>No se puede mostrar </translation>
+    </message>
+    <message>
+        <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
+        <translation>Se requiere el permiso &quot;Archivos compartidos&quot; para crear y mostrar los vínculos. Por favor, activa este permiso, reinicie la aplicación y vuelva a intentarlo.</translation>
     </message>
 </context>
 <context>

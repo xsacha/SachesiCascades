@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru">
+<TS version="2.1" language="ru">
 <context>
     <name>AppWorld</name>
     <message>
@@ -81,6 +81,48 @@
     </message>
 </context>
 <context>
+    <name>Scanner</name>
+    <message>
+        <source>VersionLookup</source>
+        <translation>Версияпоиск</translation>
+    </message>
+</context>
+<context>
+    <name>ScannerHistory</name>
+    <message>
+        <source>Scan History</source>
+        <translation>История сканирования</translation>
+    </message>
+    <message>
+        <source>SR: </source>
+        <translation>SR: </translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation>Производство</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation>бета</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation>Альфа</translation>
+    </message>
+    <message>
+        <source>No history</source>
+        <translation>Нет истории</translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation>очищать</translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation>OC: </translation>
+    </message>
+</context>
+<context>
     <name>Search</name>
     <message>
         <source>Search</source>
@@ -112,7 +154,7 @@
     </message>
     <message>
         <source>Unable to display </source>
-        <translation>Невозможно отобразить </translation>
+        <translation type="obsolete">Невозможно отобразить </translation>
     </message>
     <message>
         <source>Update %1 (%2 | %3) is available for %4!</source>
@@ -132,7 +174,7 @@
     </message>
     <message>
         <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
-        <translation>Разрешение «Общие файлы» требуется для создания и отображения связей. Пожалуйста, включите это разрешение, перезапустить приложение и попробуйте снова.</translation>
+        <translation type="obsolete">Разрешение «Общие файлы» требуется для создания и отображения связей. Пожалуйста, включите это разрешение, перезапустить приложение и попробуйте снова.</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -144,26 +186,22 @@
     </message>
     <message>
         <source>Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Сканер</translation>
     </message>
     <message>
         <source>Latest Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>VersionLookup</source>
-        <translation type="unfinished"></translation>
+        <translation>Последнее обновление</translation>
     </message>
 </context>
 <context>
     <name>SearchBundles</name>
     <message>
         <source>Available Bundles</source>
-        <translation type="unfinished"></translation>
+        <translation>Доступные Связки</translation>
     </message>
     <message>
         <source>Latest</source>
-        <translation type="unfinished">Последние</translation>
+        <translation>Последние</translation>
     </message>
 </context>
 <context>
@@ -182,50 +220,74 @@
     </message>
     <message>
         <source>Grab Links</source>
-        <translation type="unfinished"></translation>
+        <translation>Захват Ссылки</translation>
     </message>
 </context>
 <context>
     <name>SearchScanner</name>
     <message>
         <source>Version Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия сканер</translation>
     </message>
     <message>
         <source>Lookup</source>
-        <translation type="unfinished">Поиск</translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <source>Autoscan</source>
-        <translation type="unfinished"></translation>
+        <translation>Автосканирование</translation>
     </message>
     <message>
         <source>OS Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Find only existing links</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OS: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Release not found</source>
-        <translation type="unfinished"></translation>
+        <translation>OC Версия</translation>
     </message>
     <message>
         <source>Found: </source>
-        <translation type="unfinished"></translation>
+        <translation>Найдено: </translation>
     </message>
     <message>
         <source>Generate Links</source>
-        <translation type="unfinished"></translation>
+        <translation>генерировать ссылки</translation>
+    </message>
+    <message>
+        <source>Scanning...</source>
+        <translation>Сканирование...</translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation>Производство</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation>бета</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation>Альфа</translation>
+    </message>
+    <message>
+        <source>Servers: </source>
+        <translation>Сервера: </translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>История</translation>
+    </message>
+    <message>
+        <source>Stop on:</source>
+        <translation>Остановка на:</translation>
+    </message>
+    <message>
+        <source>Next Found</source>
+        <translation>Следующая Найдено</translation>
+    </message>
+    <message>
+        <source>Next Existing Links</source>
+        <translation>Следующая существующих связей</translation>
+    </message>
+    <message>
+        <source>Never</source>
+        <translation>никогда не</translation>
     </message>
 </context>
 <context>
@@ -304,15 +366,26 @@
     </message>
     <message>
         <source>Search Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим поиска</translation>
     </message>
     <message>
         <source>Upgrade</source>
-        <translation type="unfinished"></translation>
+        <translation>Обновление</translation>
     </message>
     <message>
         <source>Debrick</source>
-        <translation type="unfinished"></translation>
+        <translation>ремонтировать</translation>
+    </message>
+</context>
+<context>
+    <name>Utils</name>
+    <message>
+        <source>Unable to display </source>
+        <translation>Невозможно отобразить </translation>
+    </message>
+    <message>
+        <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
+        <translation>Разрешение «Общие файлы» требуется для создания и отображения связей. Пожалуйста, включите это разрешение, перезапустить приложение и попробуйте снова.</translation>
     </message>
 </context>
 <context>

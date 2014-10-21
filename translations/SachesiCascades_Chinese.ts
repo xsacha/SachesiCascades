@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AppWorld</name>
     <message>
@@ -81,6 +81,48 @@
     </message>
 </context>
 <context>
+    <name>Scanner</name>
+    <message>
+        <source>VersionLookup</source>
+        <translation>版本查询</translation>
+    </message>
+</context>
+<context>
+    <name>ScannerHistory</name>
+    <message>
+        <source>Scan History</source>
+        <translation>扫描历史记录</translation>
+    </message>
+    <message>
+        <source>SR: </source>
+        <translation>发布：</translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation>产品版</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation>Beta版</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation>Alpha版</translation>
+    </message>
+    <message>
+        <source>No history</source>
+        <translation>没有历史</translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation>消除</translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation>系统：</translation>
+    </message>
+</context>
+<context>
     <name>Search</name>
     <message>
         <source>Search</source>
@@ -108,7 +150,7 @@
     </message>
     <message>
         <source>Unable to display </source>
-        <translation>无法显示</translation>
+        <translation type="obsolete">无法显示</translation>
     </message>
     <message>
         <source>Update %1 (%2 | %3) is available for %4!</source>
@@ -128,7 +170,7 @@
     </message>
     <message>
         <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
-        <translation>允许“共享文件”要求创建和显示的链接。请启用此权限，重新启动应用程序，然后重试。</translation>
+        <translation type="obsolete">允许“共享文件”要求创建和显示的链接。请启用此权限，重新启动应用程序，然后重试。</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -145,10 +187,6 @@
     <message>
         <source>Latest Update</source>
         <translation>最新更新</translation>
-    </message>
-    <message>
-        <source>VersionLookup</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -201,27 +239,55 @@
     </message>
     <message>
         <source>Find only existing links</source>
-        <translation>只找到现有链接</translation>
-    </message>
-    <message>
-        <source>Checking...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OS: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Release not found</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">只找到现有链接</translation>
     </message>
     <message>
         <source>Found: </source>
-        <translation type="unfinished"></translation>
+        <translation>发现：</translation>
     </message>
     <message>
         <source>Generate Links</source>
-        <translation type="unfinished"></translation>
+        <translation>生成链接</translation>
+    </message>
+    <message>
+        <source>Scanning...</source>
+        <translation>扫描...</translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation>产品版</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation>Beta版</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation>Alpha版</translation>
+    </message>
+    <message>
+        <source>Servers: </source>
+        <translation>服务器：</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>历史</translation>
+    </message>
+    <message>
+        <source>Stop on:</source>
+        <translation>停止：</translation>
+    </message>
+    <message>
+        <source>Next Found</source>
+        <translation>接着发现</translation>
+    </message>
+    <message>
+        <source>Next Existing Links</source>
+        <translation>下一页现有链接</translation>
+    </message>
+    <message>
+        <source>Never</source>
+        <translation>从来没有</translation>
     </message>
 </context>
 <context>
@@ -300,15 +366,26 @@
     </message>
     <message>
         <source>Search Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索模式</translation>
     </message>
     <message>
         <source>Upgrade</source>
-        <translation type="unfinished"></translation>
+        <translation>升级</translation>
     </message>
     <message>
         <source>Debrick</source>
-        <translation type="unfinished"></translation>
+        <translation>修理</translation>
+    </message>
+</context>
+<context>
+    <name>Utils</name>
+    <message>
+        <source>Unable to display </source>
+        <translation>无法显示</translation>
+    </message>
+    <message>
+        <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
+        <translation>允许“共享文件”要求创建和显示的链接。请启用此权限，重新启动应用程序，然后重试。</translation>
     </message>
 </context>
 <context>

@@ -2,8 +2,9 @@
 
 #include <QObject>
 #include "world.h"
-#include "carrierinfo.h"
-#include "search.h"
+#include "search/carrierinfo.h"
+#include "search/search.h"
+#include "search/scanner.h"
 
 namespace bb
 {
@@ -33,5 +34,6 @@ private:
     QTranslator* m_pTranslator;
     CarrierInfo carrier;
     Search search;
+    Scanner scanner;
     bb::cascades::LocaleHandler* m_pLocaleHandler;
 };

@@ -12,6 +12,8 @@ namespace bb { namespace cascades {
         CodePickerProvider() {}
         virtual ~CodePickerProvider() {};
         VisualNode * createItem(Picker * pickerList, int columnIndex) {
+            Q_UNUSED(pickerList);
+            Q_UNUSED(columnIndex);
             Container * returnItem = Container::create().layout(new DockLayout());
             Label * desc = Label::create().objectName("desc");
             desc->setHorizontalAlignment(HorizontalAlignment::Center);
@@ -21,17 +23,21 @@ namespace bb { namespace cascades {
             return returnItem;
         }
         void updateItem(Picker * pickerList, int columnIndex, int rowIndex, VisualNode * pickerItem) {
-            Container * container = (Container *)pickerItem;
+            Q_UNUSED(pickerList);
+            Q_UNUSED(columnIndex);
+            //Container * container = (Container *)pickerItem;
             Label * desc = pickerItem->findChild<Label *>("desc");
             desc->setText(QString::number(rowIndex % 10));
         }
 
         int columnCount() const { return 3; }
         void range(int column, int * lowerBoundary, int * upperBoundary) {
+            Q_UNUSED(column);
             *lowerBoundary = 0;
             *upperBoundary = 19;
         }
         QVariant value(Picker * picker, const QList<int> & indices) const {
+            Q_UNUSED(picker);
             int ret = 0;
             for (int i = 0; i < 3; i++)
                 ret = ret * 10 + indices.value(i) % 10;

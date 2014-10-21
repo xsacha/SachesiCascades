@@ -459,4 +459,3 @@ private:
     QNetworkAccessManager* _manager;
     QStringList _supportedDeviceNames;
 };
-

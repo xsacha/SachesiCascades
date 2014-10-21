@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de">
+<TS version="2.1" language="de">
 <context>
     <name>AppWorld</name>
     <message>
@@ -81,6 +81,48 @@
     </message>
 </context>
 <context>
+    <name>Scanner</name>
+    <message>
+        <source>VersionLookup</source>
+        <translation>VersionNachsehen</translation>
+    </message>
+</context>
+<context>
+    <name>ScannerHistory</name>
+    <message>
+        <source>Scan History</source>
+        <translation>Prüfprotokoll</translation>
+    </message>
+    <message>
+        <source>SR: </source>
+        <translation>SR: </translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation>Produktion</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation>Beta</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation>Alpha</translation>
+    </message>
+    <message>
+        <source>No history</source>
+        <translation>Keine Geschichte</translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation>Klar</translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation>BS: </translation>
+    </message>
+</context>
+<context>
     <name>Search</name>
     <message>
         <source>Search</source>
@@ -108,7 +150,7 @@
     </message>
     <message>
         <source>Unable to display </source>
-        <translation>Kann nicht angezeigt werden </translation>
+        <translation type="obsolete">Kann nicht angezeigt werden </translation>
     </message>
     <message>
         <source>Update %1 (%2 | %3) is available for %4!</source>
@@ -128,7 +170,7 @@
     </message>
     <message>
         <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
-        <translation>Die Berechtigung &quot;Shared Files&quot; ist erforderlich, um die Links zu erstellen und anzuzeigen. Bitte aktivieren Sie diese Berechtigung, die Anwendung neu starten und erneut versuchen.</translation>
+        <translation type="obsolete">Die Berechtigung &quot;Shared Files&quot; ist erforderlich, um die Links zu erstellen und anzuzeigen. Bitte aktivieren Sie diese Berechtigung, die Anwendung neu starten und erneut versuchen.</translation>
     </message>
     <message>
         <source>Unknown</source>
@@ -140,26 +182,22 @@
     </message>
     <message>
         <source>Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Scanner</translation>
     </message>
     <message>
         <source>Latest Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>VersionLookup</source>
-        <translation type="unfinished"></translation>
+        <translation>Neuestes Update</translation>
     </message>
 </context>
 <context>
     <name>SearchBundles</name>
     <message>
         <source>Available Bundles</source>
-        <translation type="unfinished"></translation>
+        <translation>Verfügbaren Bundles</translation>
     </message>
     <message>
         <source>Latest</source>
-        <translation type="unfinished">Neuestes</translation>
+        <translation>Neuestes</translation>
     </message>
 </context>
 <context>
@@ -178,50 +216,74 @@
     </message>
     <message>
         <source>Grab Links</source>
-        <translation type="unfinished"></translation>
+        <translation>Greifer-Links</translation>
     </message>
 </context>
 <context>
     <name>SearchScanner</name>
     <message>
         <source>Version Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Version Scanner</translation>
     </message>
     <message>
         <source>Lookup</source>
-        <translation type="unfinished">Nachsehen</translation>
+        <translation>Nachsehen</translation>
     </message>
     <message>
         <source>Autoscan</source>
-        <translation type="unfinished"></translation>
+        <translation>Autoscan</translation>
     </message>
     <message>
         <source>OS Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Find only existing links</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checking...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OS: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Release not found</source>
-        <translation type="unfinished"></translation>
+        <translation>OS Version</translation>
     </message>
     <message>
         <source>Found: </source>
-        <translation type="unfinished"></translation>
+        <translation>Fand: </translation>
     </message>
     <message>
         <source>Generate Links</source>
-        <translation type="unfinished"></translation>
+        <translation>Links Erzeugen</translation>
+    </message>
+    <message>
+        <source>Scanning...</source>
+        <translation>Scannen...</translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation>Produktion</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation>Beta</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation>Alpha</translation>
+    </message>
+    <message>
+        <source>Servers: </source>
+        <translation>Servers: </translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation>Geschichte</translation>
+    </message>
+    <message>
+        <source>Stop on:</source>
+        <translation>Halt auf:</translation>
+    </message>
+    <message>
+        <source>Next Found</source>
+        <translation>Weiter Gefunden</translation>
+    </message>
+    <message>
+        <source>Next Existing Links</source>
+        <translation>Weiter Vorhandene Leitungen</translation>
+    </message>
+    <message>
+        <source>Never</source>
+        <translation>Nie</translation>
     </message>
 </context>
 <context>
@@ -300,15 +362,26 @@
     </message>
     <message>
         <source>Search Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchmodus</translation>
     </message>
     <message>
         <source>Upgrade</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbessern</translation>
     </message>
     <message>
         <source>Debrick</source>
-        <translation type="unfinished"></translation>
+        <translation>Reparatur</translation>
+    </message>
+</context>
+<context>
+    <name>Utils</name>
+    <message>
+        <source>Unable to display </source>
+        <translation>Kann nicht angezeigt werden </translation>
+    </message>
+    <message>
+        <source>The permission &apos;Shared Files&apos; is required to create and display the links. Please enable this permission, restart the application and try again.</source>
+        <translation>Die Berechtigung &quot;Shared Files&quot; ist erforderlich, um die Links zu erstellen und anzuzeigen. Bitte aktivieren Sie diese Berechtigung, die Anwendung neu starten und erneut versuchen.</translation>
     </message>
 </context>
 <context>

@@ -1,5 +1,5 @@
 1
-12
+13
 main.qml
 TopMenu.qml
 Search.qml
@@ -12,3 +12,4 @@ SearchScanner.qml
 SearchBundles.qml
 star.png
 radar.png
+ScannerHistory.qml
