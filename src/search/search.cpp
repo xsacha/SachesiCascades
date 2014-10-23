@@ -291,12 +291,12 @@ void Search::showFirmwareData(QByteArray data, QString variant)
                 newApp->setChecksum(xml.attributes().value("checksum").toString());
                 QString type = xml.attributes().value("type").toString();
                 if (type == "system:os" || type == "system:desktop") {
-                    os = newApp->name().split('/').at(1);
+                    os = newApp->version();
                     newApp->setType("os");
                     newApp->setIsMarked(true);
                     newApp->setIsAvailable(true);
                 } else if (type == "system:radio") {
-                    radio = newApp->name().split('/').at(1);
+                    radio = newApp->version();
                     newApp->setType("radio");
                     newApp->setIsMarked(true);
                     newApp->setIsAvailable(true);
@@ -304,7 +304,6 @@ void Search::showFirmwareData(QByteArray data, QString variant)
                     newApp->setType("application");
                 }
                 newApp->setPackageId(currentaddr + "/" + newApp->name());
-                newApp->setName(newApp->name().split("/").last());
 
                 newApps.append(newApp);
             }
