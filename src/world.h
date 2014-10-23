@@ -447,7 +447,7 @@ public:
         // Check item
         QString server = currentServer();
 
-        QNetworkRequest request(QString("%1/ClientAPI/content/%2?" + queryOSModelString(modelName()) + queryCountryString(_country))
+        QNetworkRequest request(QString("%1/ClientAPI/content/%2?" + queryOSModelString(modelName()))
                 .arg(server)
                 .arg(item));
         request.setRawHeader("User-Agent", "AppWorld/5.1.0.60");

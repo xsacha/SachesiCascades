@@ -66,81 +66,82 @@ Page {
             ]
             onSelectedIndexChanged: if (scanner.findExisting != selectedIndex) { scanner.findExisting = selectedIndex }
         }
-        Picker {
-            id: osPicker
-            title: qsTr("OS Version") + Retranslate.onLocaleOrLanguageChanged
-            property int initialValue: 310800
-            description: selectedValue
-            function decBuild() {
-                var osString = selectedValue
-                var oldfourth = selectedIndex(4) % 10;
-                select(4, 10 + ((oldfourth + (10-3)) % 10), ScrollAnimation.Smooth)
-                if (oldfourth < 3) {
-                    var oldthird = selectedIndex(3) % 10;
-                    select(3, 10 + ((oldthird + (10-1)) % 10), ScrollAnimation.Smooth)
-                    if (oldthird >= 9) {
-                        var oldsecond = selectedIndex(2);
-                        select(2, (oldsecond + (50-1)) % 50, ScrollAnimation.Smooth)
+        Container {
+            layout: StackLayout {
+                orientation: LayoutOrientation.LeftToRight
+            }
+            Picker {
+                id: osPicker
+                verticalAlignment: VerticalAlignment.Center
+                title: qsTr("OS Version") + Retranslate.onLocaleOrLanguageChanged
+                property int initialValue: 310800
+                description: selectedValue
+                function decBuild() {
+                    var osString = selectedValue
+                    var oldfourth = selectedIndex(4) % 10;
+                    select(4, 10 + ((oldfourth + (10-3)) % 10), ScrollAnimation.Smooth)
+                    if (oldfourth < 3) {
+                        var oldthird = selectedIndex(3) % 10;
+                        select(3, 10 + ((oldthird + (10-1)) % 10), ScrollAnimation.Smooth)
+                        if (oldthird < 1) {
+                            var oldsecond = selectedIndex(2);
+                            select(2, (oldsecond + (50-1)) % 50, ScrollAnimation.Smooth)
+                        }
+                    }
+                    var components = osString.split('.')
+                    components[3] = parseInt(components[3], 10) - 3
+                    osString = components.join('.')
+                    return osString
+                }
+                function incBuild() {
+                    var osString = selectedValue
+                    var oldfourth = selectedIndex(4) % 10;
+                    select(4, 10 + ((oldfourth + 3) % 10), ScrollAnimation.Smooth)
+                    if (oldfourth >= 7) {
+                        var oldthird = selectedIndex(3) % 10;
+                        select(3, 10 + ((oldthird + 1) % 10), ScrollAnimation.Smooth)
+                        if (oldthird >= 9) {
+                            var oldsecond = selectedIndex(2);
+                            select(2, (oldsecond + 1) % 50, ScrollAnimation.Smooth)
+                        }
+                    }
+                    var components = osString.split('.')
+                    components[3] = parseInt(components[3], 10) + 3
+                    osString = components.join('.')
+                    return osString
+                }
+                onCreationCompleted: {
+                    select(0, initialValue / 100000);
+                    select(1, 5 + initialValue / 10000 % 10);
+                    select(2, initialValue / 100 % 100);
+                    select(3, 10 + initialValue / 10 % 10);
+                    select(4, 10 + initialValue % 10);
+                }
+                pickerItemProvider: OSPickerProvider {
+                    columnWidthRatio: [5, 2, 5, 5, 5]
+                }
+            }
+            Container {
+                Button {
+                    text: "+"
+                    preferredWidth: ui.du(7.0)
+                    onClicked: {
+                        osPicker.incBuild();
                     }
                 }
-                var components = osString.split('.')
-                components[3] = parseInt(components[3], 10) - 3
-                osString = components.join('.')
-                return osString
-            }
-            function incBuild() {
-                var osString = selectedValue
-                var oldfourth = selectedIndex(4) % 10;
-                select(4, 10 + ((oldfourth + 3) % 10), ScrollAnimation.Smooth)
-                if (oldfourth >= 7) {
-                    var oldthird = selectedIndex(3) % 10;
-                    select(3, 10 + ((oldthird + 1) % 10), ScrollAnimation.Smooth)
-                    if (oldthird >= 9) {
-                        var oldsecond = selectedIndex(2);
-                        select(2, (oldsecond + 1) % 50, ScrollAnimation.Smooth)
+                Button {
+                    text: "-"
+                    preferredWidth: ui.du(7.0)
+                    onClicked: {
+                        osPicker.decBuild();
                     }
                 }
-                var components = osString.split('.')
-                components[3] = parseInt(components[3], 10) + 3
-                osString = components.join('.')
-                return osString
-            }
-            onCreationCompleted: {
-                select(0, initialValue / 100000);
-                select(1, 5 + initialValue / 10000 % 10);
-                select(2, initialValue / 100 % 100);
-                select(3, 10 + initialValue / 10 % 10);
-                select(4, 10 + initialValue % 10);
-            }
-            pickerItemProvider: OSPickerProvider {
-                columnWidthRatio: [5, 2, 5, 5, 5]
+                margin.leftOffset: ui.du(1.0)
             }
             margin {
                 topOffset: ui.du(2.0)
                 leftOffset: ui.du(1.0)
                 rightOffset: ui.du(1.0)
-            }
-        }
-        Container {
-            layout: StackLayout {
-                orientation: LayoutOrientation.LeftToRight
-            }
-            Button {
-                text: "-"
-                onClicked: {
-                    osPicker.decBuild();
-                }
-            }
-            Button {
-                text: "+"
-                onClicked: {
-                    osPicker.incBuild();
-                }
-            }
-            margin {
-                topOffset: ui.du(2.0)
-                leftOffset: ui.du(5.0)
-                rightOffset: ui.du(5.0)
             }
         }
         Label {
@@ -165,7 +166,7 @@ Page {
          textStyle.fontSize: FontSize.Large
          horizontalAlignment: HorizontalAlignment.Center 
          }*/
-        Label {
+Label {
             visible: scanner.curRelease != null && scanner.curRelease.srVersion != ""
             text: {
                 var ret = ""
@@ -183,13 +184,13 @@ Page {
             }
             textStyle.fontSize: FontSize.Large
             horizontalAlignment: HorizontalAlignment.Center
-        }
-        Button {
-            visible: scanner.curRelease != null && scanner.curRelease.baseUrl != ""
-            text: qsTr("Generate Links") + Retranslate.onLocaleOrLanguageChanged
-            onClicked: scanner.generatePotentialLinks()
-            horizontalAlignment: HorizontalAlignment.Center
-        }
+}
+Button {
+    visible: scanner.curRelease != null && scanner.curRelease.baseUrl != ""
+    text: qsTr("Generate Links") + Retranslate.onLocaleOrLanguageChanged
+    onClicked: scanner.generatePotentialLinks()
+    horizontalAlignment: HorizontalAlignment.Center
+}
     }
     paneProperties: NavigationPaneProperties {
         backButton: ActionItem {
