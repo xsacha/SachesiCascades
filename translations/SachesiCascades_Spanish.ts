@@ -380,6 +380,10 @@
         <source>Debrick</source>
         <translation>Reparación</translation>
     </message>
+    <message>
+        <source>Country</source>
+        <translation type="unfinished">País</translation>
+    </message>
 </context>
 <context>
     <name>Utils</name>

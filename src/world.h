@@ -25,6 +25,7 @@ class AppWorld : public QObject
     Q_PROPERTY(int     server          READ serverInt WRITE setServerInt  NOTIFY serverChanged)
     Q_PROPERTY(int     osVer           READ osVer     WRITE setOsVer      NOTIFY osVerChanged)
     Q_PROPERTY(int     model           READ model     WRITE setModel      NOTIFY modelChanged)
+    Q_PROPERTY(QString country         READ country   WRITE setCountry    NOTIFY countryChanged)
     Q_PROPERTY(bb::cascades::DataModel* appList READ appList NOTIFY appListChanged)
     Q_PROPERTY(AppWorldApps* contentItem READ contentItem NOTIFY contentItemChanged)
     Q_PROPERTY(int appCount READ appCount NOTIFY appListChanged)
@@ -55,6 +56,32 @@ public:
             showContentItem(query);
         else
             search(query);
+    }
+
+    QString queryCountryString(QString country) {
+        if (country == "")
+            return "";
+        int mcc;
+        if (country == "Afghanistan") mcc = 412;
+        else if (country == "Albania") mcc = 276;
+        else if (country == "Algeria") mcc = 603;
+        else if (country == "American Samoa") mcc = 544;
+        else if (country == "Andorra") mcc = 1;
+        else if (country == "Australia") mcc = 14;
+        else if (country == "Austria") mcc = 232;
+        else if (country == "Canada") mcc = 302;
+        else if (country == "Colombia") mcc = 732;
+        else if (country == "France") mcc = 208;
+        else if (country == "Hong Kong") mcc = 454;
+        else if (country == "India") mcc = 404;
+        else if (country == "Russia") mcc = 250;
+        else if (country == "Spain") mcc = 214;
+        else if (country == "Poland") mcc = 260;
+        else if (country == "United Kingdom") mcc = 234;
+        else if (country == "United States") mcc = 310;
+        else if (country == "Ukraine") mcc = 255;
+        else return "";
+        return QString("&currentmcc=%1").arg(mcc);
     }
 
     QString queryOSModelString(QString model, bool osRequired = false) {
@@ -116,9 +143,12 @@ public:
     Q_INVOKABLE void download(QString id) {
         // Make sure it is downloadable, even if they chose the wrong phone
         QString model = modelName();
+        QString country = _country;
         if (!_supportedDeviceNames.empty() && !_supportedDeviceNames.contains(model))
             model = _supportedDeviceNames.first();
-        QDesktopServices::openUrl("appworld://musicdownload/%2E./usfdownload?contentid=" + id + queryOSModelString(model, true));
+        if (!_supportedCountryNames.empty() && !_supportedCountryNames.contains(country))
+            country = _supportedCountryNames.first();
+        QDesktopServices::openUrl("appworld://musicdownload/%2E./usfdownload?contentid=" + id + queryOSModelString(model, true) + queryCountryString(country));
     }
 
     void invalidIDToast() {
@@ -163,6 +193,9 @@ public:
             for (QMap<QString, QVariant>::const_iterator hdrIter = dto.begin(); hdrIter != dto.end(); ++hdrIter) {
                 if (hdrIter.key() == "supportedDevices") {
                     _supportedDeviceNames = hdrIter.value().toStringList();
+                }
+                if (hdrIter.key() == "supportedCountries") {
+                    _supportedCountryNames = hdrIter.value().toStringList();
                 }
             }
         }
@@ -241,27 +274,27 @@ public:
 
     Q_INVOKABLE void search(QString query) {
         QString server = currentServer();
-        searchRequest(QString("%1/ClientAPI/searchlist?s=%2" + queryOSModelString(modelName()))
+        searchRequest(QString("%1/ClientAPI/searchlist?s=%2" + queryOSModelString(modelName()) + queryCountryString(_country))
                 .arg(server)
                 .arg(query));
     }
 
     Q_INVOKABLE void showVendor(QString id) {
         QString server = currentServer();
-        searchRequest(QString("%1/ClientAPI/vendorlistforappsgames/%2?" + queryOSModelString(modelName()))
+        searchRequest(QString("%1/ClientAPI/vendorlistforappsgames/%2?" + queryOSModelString(modelName()) + queryCountryString(_country))
                 .arg(server)
                 .arg(id));
     }
 
     Q_INVOKABLE void showCars() {
         QString server = currentServer();
-        searchRequest(QString("%1/ClientAPI/autostorepages/?" + queryOSModelString(modelName(), true))
+        searchRequest(QString("%1/ClientAPI/autostorepages/?" + queryOSModelString(modelName(), true) + queryCountryString(_country))
                 .arg(server));
     }
 
     Q_INVOKABLE void showHome() {
         QString server = currentServer();
-        searchRequest(QString("%1/ClientAPI/usfpage/?" + queryOSModelString(modelName(), true))
+        searchRequest(QString("%1/ClientAPI/usfpage/?" + queryOSModelString(modelName(), true) + queryCountryString(_country))
                 .arg(server));
     }
 
@@ -409,11 +442,12 @@ public:
     Q_INVOKABLE void showContentItem(QString item) {
         // Handle whitelists
         _supportedDeviceNames.clear();
+        _supportedCountryNames.clear();
         findAppWhitelist(item);
         // Check item
         QString server = currentServer();
 
-        QNetworkRequest request(QString("%1/ClientAPI/content/%2?" + queryOSModelString(modelName()))
+        QNetworkRequest request(QString("%1/ClientAPI/content/%2?" + queryOSModelString(modelName()) + queryCountryString(_country))
                 .arg(server)
                 .arg(item));
         request.setRawHeader("User-Agent", "AppWorld/5.1.0.60");
@@ -427,10 +461,12 @@ public:
     int serverInt() const { return _server; }
     int osVer() const { return _osVer; }
     int model() const { return _model; }
+    QString country() const { return _country; }
     void setListing(bool listing) { _listing = listing; emit listingChanged(); }
     void setServerInt(int server) { _server = server; emit serverChanged(); }
     void setOsVer(int osVer) { _osVer = osVer; emit osVerChanged(); }
     void setModel(int model) { _model = model; emit modelChanged(); }
+    void setCountry(QString country) { _country = country; emit countryChanged(); }
     AppWorldApps* contentItem() const { return _contentItem; }
     bb::cascades::DataModel* appList() {
         return new bb::cascades::QListDataModel<AppWorldApps*>(_appList);
@@ -444,6 +480,7 @@ public:
     void serverChanged();
     void osVerChanged();
     void modelChanged();
+    void countryChanged();
     void appListChanged();
     void contentItemChanged();
 
@@ -452,10 +489,12 @@ private:
     QStringList _more;
     int _server;
     int _model;
+    QString _country;
     int _osVer;
 
     QList<AppWorldApps*> _appList;
     AppWorldApps* _contentItem;
     QNetworkAccessManager* _manager;
     QStringList _supportedDeviceNames;
+    QStringList _supportedCountryNames;
 };

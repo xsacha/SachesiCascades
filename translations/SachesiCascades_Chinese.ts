@@ -376,6 +376,10 @@
         <source>Debrick</source>
         <translation>修理</translation>
     </message>
+    <message>
+        <source>Country</source>
+        <translation type="unfinished">国家</translation>
+    </message>
 </context>
 <context>
     <name>Utils</name>

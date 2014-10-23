@@ -103,6 +103,38 @@ MenuDefinition {
                         ]
                     }
                     DropDown {
+                        id: countrySelect
+                        title: qsTr("Country") + Retranslate.onLocaleOrLanguageChanged
+                        selectedIndex: 0
+                        onSelectedIndexChanged: {
+                            if (selectedIndex == 0)
+                                world.country = "";
+                            else if (world.country != selectedOption.text)
+                                world.country = selectedOption.text
+                        }
+                        options: [
+                            Option { text: "None"},
+                            Option { text: "Afghanistan" },
+                            Option { text: "Albania" },
+                            Option { text: "Algeria" },
+                            Option { text: "American Samoa" },
+                            Option { text: "Andorra" },
+                            Option { text: "Australia" },
+                            Option { text: "Austria" },
+                            Option { text: "Canada" },
+                            Option { text: "Colombia" },
+                            Option { text: "France" },
+                            Option { text: "Hong Kong" },
+                            Option { text: "India" },
+                            Option { text: "Russia" },
+                            Option { text: "Spain" },
+                            Option { text: "Poland" },
+                            Option { text: "United Kingdom" },
+                            Option { text: "United States" },
+                            Option { text: "Ukraine" }
+                        ]
+                    }
+                    DropDown {
                         title: qsTr("Server") + Retranslate.onLocaleOrLanguageChanged
                         selectedIndex: world.server
                         onSelectedIndexChanged: if (world.server != selectedIndex) world.server = selectedIndex

@@ -372,6 +372,10 @@
         <source>Debrick</source>
         <translation>Reparatur</translation>
     </message>
+    <message>
+        <source>Country</source>
+        <translation type="unfinished">Land</translation>
+    </message>
 </context>
 <context>
     <name>Utils</name>

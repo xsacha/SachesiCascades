@@ -376,6 +376,10 @@
         <source>Debrick</source>
         <translation>ремонтировать</translation>
     </message>
+    <message>
+        <source>Country</source>
+        <translation type="unfinished">Страна</translation>
+    </message>
 </context>
 <context>
     <name>Utils</name>

@@ -21,8 +21,8 @@ void Scanner::reverseLookup(QString OSver) {
             "<software><osVersion>%2</osVersion></software>"
             "</clientProperties>"
             "</srVersionLookupRequest>")
-                                                .arg(QDateTime::currentMSecsSinceEpoch())
-                                                .arg(OSver);
+                                                        .arg(QDateTime::currentMSecsSinceEpoch())
+                                                        .arg(OSver);
     QNetworkRequest request;
     request.setRawHeader("Content-Type", "text/xml;charset=UTF-8");
     QStringList serverList = QStringList("cs.sl");
@@ -74,16 +74,12 @@ void Scanner::newSRVersion() {
                 QCryptographicHash hash(QCryptographicHash::Sha1);
                 hash.addData(swRelease.toLatin1());
                 QString hashResult = hash.result().toHex();
-                // Two servers! Two scans!
-                _scansActive = _scansActive + 1;
-                foreach(QString server, QStringList() << "production" << "betazone") {
-                    QString url = "http://cdn.fs.sl.blackberry.com/fs/qnx/" + server + "/" + QString(hash.result().toHex());
-                    QNetworkRequest request;
-                    request.setRawHeader("Content-Type", "text/xml;charset=UTF-8");
-                    request.setUrl(QUrl(url));
-                    QNetworkReply* replyTmp = _manager->head(request);
-                    connect(replyTmp, SIGNAL(finished()), this, SLOT(validateDownload()));
-                }
+                QString url = "http://cdn.fs.sl.blackberry.com/fs/qnx/production/" + QString(hash.result().toHex());
+                QNetworkRequest request;
+                request.setRawHeader("Content-Type", "text/xml;charset=UTF-8");
+                request.setUrl(QUrl(url));
+                QNetworkReply* replyTmp = _manager->head(request);
+                connect(replyTmp, SIGNAL(finished()), this, SLOT(validateDownload()));
             }
             reply->deleteLater();
             return;

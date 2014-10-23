@@ -16,8 +16,8 @@ class CarrierInfo : public QObject {
 public:
     CarrierInfo(QObject* parent = 0)
         : QObject(parent)
-    , _mcc(0)
-    , _mnc(0)
+    , _mcc(-1)
+    , _mnc(-1)
     , _image(0)
     {
         _manager = new QNetworkAccessManager();
@@ -39,6 +39,8 @@ public:
 
 public slots:
     void update() {
+        if (_mnc == -1 || _mcc == -1)
+            return;
         QNetworkRequest request(QString("http://appworld.blackberry.com/ClientAPI/checkcarrier?homemcc=%1&homemnc=%2&devicevendorid=-1&pin=0")
                                 .arg(_mcc)
                                 .arg(_mnc));

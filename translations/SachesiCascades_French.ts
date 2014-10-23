@@ -376,6 +376,10 @@
         <source>Debrick</source>
         <translation>Réparer</translation>
     </message>
+    <message>
+        <source>Country</source>
+        <translation type="unfinished">Pays</translation>
+    </message>
 </context>
 <context>
     <name>Utils</name>

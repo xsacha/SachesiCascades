@@ -7,6 +7,7 @@ Search::Search(QObject* parent)
 , _updateMessage("")
 , _softwareRelease("")
 , _versionRelease("")
+, _multiscan(false)
 , _hasPotentialLinks(0)
 , _scanning(0)
 , _autoscan(0)
@@ -282,7 +283,7 @@ void Search::showFirmwareData(QByteArray data, QString variant)
                 // Remember: this name *can* change
                 newApp->setFriendlyName(xml.attributes().value("name").toString());
                 // Remember: this name *can* change
-                newApp->setName(xml.attributes().value("path").toString());
+                newApp->setName(xml.attributes().value("path").toString().split('/').last());
                 // Remember: this size *can* change
                 newApp->setSize(xml.attributes().value("downloadSize").toString().toInt());
                 newApp->setVersion(xml.attributes().value("version").toString());

@@ -97,11 +97,18 @@ NavigationPane {
                     rightOffset: ui.du(1.0)
                 }
             }
-            WebImageView {
-                preferredWidth: ui.du(30.0)
-                scalingMethod: ScalingMethod.AspectFit
+            Container {
                 horizontalAlignment: HorizontalAlignment.Center
-                url: carrier.image == 0 ? "" : "http://appworld.blackberry.com/ClientAPI/image/" + carrier.image + "/150X/png"
+                WebImageView {
+                    preferredWidth: ui.du(30.0)
+                    scalingMethod: ScalingMethod.AspectFit
+                    url: carrier.image == 0 ? "" : "http://appworld.blackberry.com/ClientAPI/image/" + carrier.image + "/150X/png"
+                    gestureHandlers: [
+                        TapHandler {
+                            onTapped: Qt.openUrlExternally("https://en.wikipedia.org/w/index.php?title=Mobile_country_code#A")
+                        }
+                    ]
+                }
             }
             DropDown {
                 id: deviceSelector
@@ -137,7 +144,8 @@ NavigationPane {
     }
     onPopTransitionEnded: {
         // If Scanner gets popped while autoscanning, turn it off?
-        // if (page.objectName == "scanner")
+        if (page.objectName == "scanner")
+            scanner.autoscan = false
         page.destroy();
     }
 }
