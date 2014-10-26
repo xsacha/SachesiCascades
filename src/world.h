@@ -47,6 +47,7 @@ public:
     }
 
     Q_SLOT void onInvoke(const bb::system::InvokeRequest& invoke) {
+        qDebug() << invoke.uri().scheme();
         QString query = invoke.uri().path();
         if (query.isEmpty())
             showHome();
