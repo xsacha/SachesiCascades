@@ -35,6 +35,7 @@ Page {
         },
         ActionItem {
             title: qsTr("History") + Retranslate.onLocaleOrLanguageChanged
+            imageSource: "asset:///history.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
                 var page = historyDefinition.createObject();
@@ -74,7 +75,20 @@ Page {
                 id: osPicker
                 verticalAlignment: VerticalAlignment.Center
                 title: qsTr("OS Version") + Retranslate.onLocaleOrLanguageChanged
-                property int initialValue: 310800
+                property string latestOS: searchPage.latestOS
+                onLatestOSChanged: {
+                    var array = latestOS.split('.')
+                    if (array.length > 3) {
+                        var major = parseInt(array[1])
+                        var minor = parseInt(array[2])
+                        var build = parseInt(array[3])
+                        select(0, major);
+                        select(1, 5 + minor);
+                        select(2, (build / 100) % 100)
+                        select(3, 10 + (build / 10) % 10)
+                        select(4, 10 + build % 10)
+                    }
+                }
                 description: selectedValue
                 function decBuild() {
                     var osString = selectedValue
@@ -109,13 +123,6 @@ Page {
                     components[3] = parseInt(components[3], 10) + 3
                     osString = components.join('.')
                     return osString
-                }
-                onCreationCompleted: {
-                    select(0, initialValue / 100000);
-                    select(1, 5 + initialValue / 10000 % 10);
-                    select(2, initialValue / 100 % 100);
-                    select(3, 10 + initialValue / 10 % 10);
-                    select(4, 10 + initialValue % 10);
                 }
                 pickerItemProvider: OSPickerProvider {
                     columnWidthRatio: [5, 2, 5, 5, 5]

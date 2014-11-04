@@ -6,6 +6,7 @@ import custom.pickers 1.0
 NavigationPane {
     id: navPane
     Page {
+        id: searchPage
         titleBar: TitleBar {
             title: qsTr("Update Search") + Retranslate.onLocaleOrLanguageChanged
         }
@@ -55,6 +56,30 @@ NavigationPane {
                 source: "SearchScanner.qml"
             }
         ]
+        property string latestOS: "10.3.1.1016"
+        onCreationCompleted: {
+            var http = new XMLHttpRequest()
+            var url = "https://raw.githubusercontent.com/xsacha/Sachesi/master/carrier";
+            http.open("GET", url, true);
+            http.send(null)
+            http.onreadystatechange = function() {
+                if(http.readyState == 4 && http.status == 200) {
+                    var array = http.responseText.split('\n')
+                    if (array.length > 3) {
+                        var countrycode = parseInt(array[0])
+                        countryPicker.select(0, 10 + countrycode / 100);
+                        countryPicker.select(1, 10 + countrycode / 10 % 10);
+                        countryPicker.select(2, 10 + countrycode % 10);
+                        var carriercode = parseInt(array[1])
+                        carrierPicker.select(0, 10 + carriercode / 100);
+                        carrierPicker.select(1, 10 + carriercode / 10 % 10);
+                        carrierPicker.select(2, 10 + carriercode % 10);
+                        deviceSelector.selectedIndex = parseInt(array[2])
+                        latestOS = array[3]
+                    }
+                }
+            }
+        }
         Container {
             horizontalAlignment: HorizontalAlignment.Fill
             Picker {
@@ -99,6 +124,7 @@ NavigationPane {
             }
             Container {
                 horizontalAlignment: HorizontalAlignment.Center
+                background: ui.palette.plainBase
                 WebImageView {
                     preferredWidth: ui.du(30.0)
                     scalingMethod: ScalingMethod.AspectFit
@@ -145,7 +171,7 @@ NavigationPane {
     onPopTransitionEnded: {
         // If Scanner gets popped while autoscanning, turn it off?
         if (page.objectName == "scanner")
-            scanner.autoscan = false
+            scanner.isAuto = false
         page.destroy();
     }
 }

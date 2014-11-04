@@ -4,12 +4,12 @@
 <context>
     <name>AppWorld</name>
     <message>
-        <location filename="src/world.h" line="126"/>
+        <location filename="src/world.h" line="157"/>
         <source>Invalid ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="src/world.h" line="134"/>
+        <location filename="src/world.h" line="165"/>
         <source>Enter Application ID</source>
         <translation type="unfinished"></translation>
     </message>
@@ -17,7 +17,7 @@
 <context>
     <name>Scanner</name>
     <message>
-        <location filename="src/search/scanner.cpp" line="154"/>
+        <location filename="src/search/scanner.cpp" line="150"/>
         <source>VersionLookup</source>
         <translation type="unfinished"></translation>
     </message>
@@ -30,7 +30,7 @@
 <context>
     <name>Search</name>
     <message>
-        <location filename="src/search/search.cpp" line="24"/>
+        <location filename="src/search/search.cpp" line="25"/>
         <source>Links</source>
         <translation type="unfinished"></translation>
     </message>

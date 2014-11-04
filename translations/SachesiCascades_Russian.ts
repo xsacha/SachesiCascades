@@ -378,7 +378,7 @@
     </message>
     <message>
         <source>Country</source>
-        <translation type="unfinished">Страна</translation>
+        <translation>Страна</translation>
     </message>
 </context>
 <context>
