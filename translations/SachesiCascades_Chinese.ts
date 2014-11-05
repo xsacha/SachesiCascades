@@ -228,6 +228,10 @@
         <source>Latest Update</source>
         <translation>最新更新</translation>
     </message>
+    <message>
+        <source>Whitelist Settings</source>
+        <translation>白名单设置</translation>
+    </message>
 </context>
 <context>
     <name>SearchBundles</name>

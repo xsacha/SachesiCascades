@@ -232,6 +232,10 @@
         <source>Latest Update</source>
         <translation>Последнее обновление</translation>
     </message>
+    <message>
+        <source>Whitelist Settings</source>
+        <translation>Белый список Настройки</translation>
+    </message>
 </context>
 <context>
     <name>SearchBundles</name>

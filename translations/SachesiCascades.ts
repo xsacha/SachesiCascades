@@ -212,6 +212,10 @@
         <source>Latest Update</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Whitelist Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SearchBundles</name>

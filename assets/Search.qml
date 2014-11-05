@@ -82,6 +82,9 @@ NavigationPane {
         }
         Container {
             horizontalAlignment: HorizontalAlignment.Fill
+            Header {
+                title: qsTr("Whitelist Settings")
+            }
             Picker {
                 id: countryPicker
                 title: qsTr("Country") + Retranslate.onLocaleOrLanguageChanged

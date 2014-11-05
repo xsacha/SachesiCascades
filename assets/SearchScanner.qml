@@ -17,7 +17,6 @@ Page {
         },
         ActionItem {
             title: qsTr("Autoscan") + Retranslate.onLocaleOrLanguageChanged
-            enabled: scanner.historyCount
             imageSource: "asset:///radar.png"
             backgroundColor: scanner.isAuto ? ui.palette.primaryBase : ui.palette.plainBase
             property bool finished: scanner.finishedScan
@@ -36,6 +35,7 @@ Page {
         },
         ActionItem {
             title: qsTr("History") + Retranslate.onLocaleOrLanguageChanged
+            enabled: scanner.historyCount
             imageSource: "asset:///history.png"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
