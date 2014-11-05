@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AppWorld</name>
     <message>
@@ -88,78 +88,78 @@
     </message>
     <message>
         <source>SR: </source>
-        <translation type="unfinished">发布：</translation>
+        <translation>发布：</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation type="unfinished">系统：</translation>
+        <translation>系统：</translation>
     </message>
     <message>
         <source>Production</source>
-        <translation type="unfinished">产品版</translation>
+        <translation>产品版</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation type="unfinished">Beta版</translation>
+        <translation>Beta版</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation type="unfinished">Alpha版</translation>
+        <translation>Alpha版</translation>
     </message>
     <message>
         <source>History</source>
-        <translation type="unfinished">历史</translation>
+        <translation>历史</translation>
     </message>
 </context>
 <context>
     <name>ScannerHistory</name>
     <message>
         <source>Scan History</source>
-        <translation type="unfinished">扫描历史记录</translation>
+        <translation>扫描历史记录</translation>
     </message>
     <message>
         <source>SR: </source>
-        <translation type="unfinished">发布：</translation>
+        <translation>发布：</translation>
     </message>
     <message>
         <source>Production</source>
-        <translation type="unfinished">产品版</translation>
+        <translation>产品版</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation type="unfinished">Beta版</translation>
+        <translation>Beta版</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation type="unfinished">Alpha版</translation>
+        <translation>Alpha版</translation>
     </message>
     <message>
         <source>No history</source>
-        <translation type="unfinished">没有历史</translation>
+        <translation>没有历史</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="unfinished">消除</translation>
+        <translation>消除</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation type="unfinished">系统：</translation>
+        <translation>系统：</translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>输出</translation>
     </message>
     <message>
         <source>I found </source>
-        <translation type="unfinished">我发现</translation>
+        <translation>我发现</translation>
     </message>
     <message>
         <source> with </source>
-        <translation type="unfinished"></translation>
+        <translation>同</translation>
     </message>
     <message>
         <source> using Sachesi </source>
-        <translation type="unfinished">使用Sachesi</translation>
+        <translation>使用Sachesi</translation>
     </message>
 </context>
 <context>

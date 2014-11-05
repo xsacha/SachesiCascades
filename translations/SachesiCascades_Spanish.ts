@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="es_CO">
+<TS version="2.1" language="es_CO">
 <context>
     <name>AppWorld</name>
     <message>
@@ -88,78 +88,78 @@
     </message>
     <message>
         <source>SR: </source>
-        <translation type="unfinished">SR: </translation>
+        <translation>SR: </translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation type="unfinished">SO: </translation>
+        <translation>SO: </translation>
     </message>
     <message>
         <source>Production</source>
-        <translation type="unfinished">Producción</translation>
+        <translation>Producción</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation type="unfinished">Beta</translation>
+        <translation>Beta</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation type="unfinished">Alfa</translation>
+        <translation>Alfa</translation>
     </message>
     <message>
         <source>History</source>
-        <translation type="unfinished">Historia</translation>
+        <translation>Historia</translation>
     </message>
 </context>
 <context>
     <name>ScannerHistory</name>
     <message>
         <source>Scan History</source>
-        <translation type="unfinished">Historia de Análisis</translation>
+        <translation>Historia de Análisis</translation>
     </message>
     <message>
         <source>SR: </source>
-        <translation type="unfinished">SR: </translation>
+        <translation>SR: </translation>
     </message>
     <message>
         <source>Production</source>
-        <translation type="unfinished">Producción</translation>
+        <translation>Producción</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation type="unfinished">Beta</translation>
+        <translation>Beta</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation type="unfinished">Alfa</translation>
+        <translation>Alfa</translation>
     </message>
     <message>
         <source>No history</source>
-        <translation type="unfinished">No hay historial</translation>
+        <translation>No hay historial</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="unfinished">Limpiar</translation>
+        <translation>Limpiar</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation type="unfinished">SO: </translation>
+        <translation>SO: </translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar</translation>
     </message>
     <message>
         <source>I found </source>
-        <translation type="unfinished">Encontré </translation>
+        <translation>Encontré </translation>
     </message>
     <message>
         <source> with </source>
-        <translation type="unfinished"></translation>
+        <translation> con </translation>
     </message>
     <message>
         <source> using Sachesi </source>
-        <translation type="unfinished"> utilizando Sachesi </translation>
+        <translation> utilizando Sachesi </translation>
     </message>
 </context>
 <context>

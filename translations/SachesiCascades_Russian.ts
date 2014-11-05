@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru">
+<TS version="2.1" language="ru">
 <context>
     <name>AppWorld</name>
     <message>
@@ -88,78 +88,78 @@
     </message>
     <message>
         <source>SR: </source>
-        <translation type="unfinished">SR: </translation>
+        <translation>SR: </translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation type="unfinished">OC: </translation>
+        <translation>OC: </translation>
     </message>
     <message>
         <source>Production</source>
-        <translation type="unfinished">Производство</translation>
+        <translation>Производство</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation type="unfinished">бета</translation>
+        <translation>бета</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation type="unfinished">Альфа</translation>
+        <translation>Альфа</translation>
     </message>
     <message>
         <source>History</source>
-        <translation type="unfinished">История</translation>
+        <translation>История</translation>
     </message>
 </context>
 <context>
     <name>ScannerHistory</name>
     <message>
         <source>Scan History</source>
-        <translation type="unfinished">История сканирования</translation>
+        <translation>История сканирования</translation>
     </message>
     <message>
         <source>SR: </source>
-        <translation type="unfinished">SR: </translation>
+        <translation>SR: </translation>
     </message>
     <message>
         <source>Production</source>
-        <translation type="unfinished">Производство</translation>
+        <translation>Производство</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation type="unfinished">бета</translation>
+        <translation>бета</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation type="unfinished">Альфа</translation>
+        <translation>Альфа</translation>
     </message>
     <message>
         <source>No history</source>
-        <translation type="unfinished">Нет истории</translation>
+        <translation>Нет истории</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="unfinished">очищать</translation>
+        <translation>очищать</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation type="unfinished">OC: </translation>
+        <translation>OC: </translation>
     </message>
     <message>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>экспортировать</translation>
     </message>
     <message>
         <source>I found </source>
-        <translation type="unfinished">я нашел </translation>
+        <translation>я нашел </translation>
     </message>
     <message>
         <source> with </source>
-        <translation type="unfinished"></translation>
+        <translation> с </translation>
     </message>
     <message>
         <source> using Sachesi </source>
-        <translation type="unfinished"> используя Sachesi </translation>
+        <translation> используя Sachesi </translation>
     </message>
 </context>
 <context>
