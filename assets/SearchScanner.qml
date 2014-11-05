@@ -76,9 +76,10 @@ Page {
                 verticalAlignment: VerticalAlignment.Center
                 title: qsTr("OS Version") + Retranslate.onLocaleOrLanguageChanged
                 property string latestOS: searchPage.latestOS
+                onCreationCompleted: latestOSChanged()
                 onLatestOSChanged: {
                     var array = latestOS.split('.')
-                    if (array.length > 3) {
+                    if (columnCount > 3 && array.length > 3) {
                         var major = parseInt(array[1])
                         var minor = parseInt(array[2])
                         var build = parseInt(array[3])
