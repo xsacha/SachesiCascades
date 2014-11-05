@@ -86,15 +86,12 @@
         <source>VersionLookup</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>ScannerHistory</name>
     <message>
-        <source>Scan History</source>
+        <source>SR: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>SR: </source>
+        <source>OS: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -110,7 +107,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No history</source>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScannerHistory</name>
+    <message>
+        <source>Scan History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -118,7 +122,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SR: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>OS: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I found </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> with </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> using Sachesi </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

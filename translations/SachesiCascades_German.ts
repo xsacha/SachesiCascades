@@ -86,40 +86,80 @@
         <source>VersionLookup</source>
         <translation>VersionNachsehen</translation>
     </message>
+    <message>
+        <source>SR: </source>
+        <translation type="unfinished">SR: </translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation type="unfinished">BS: </translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation type="unfinished">Produktion</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation type="unfinished">Beta</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation type="unfinished">Alpha</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished">Geschichte</translation>
+    </message>
 </context>
 <context>
     <name>ScannerHistory</name>
     <message>
         <source>Scan History</source>
-        <translation>Prüfprotokoll</translation>
+        <translation type="unfinished">Prüfprotokoll</translation>
     </message>
     <message>
         <source>SR: </source>
-        <translation>SR: </translation>
+        <translation type="unfinished">SR: </translation>
     </message>
     <message>
         <source>Production</source>
-        <translation>Produktion</translation>
+        <translation type="unfinished">Produktion</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation>Beta</translation>
+        <translation type="unfinished">Beta</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation>Alpha</translation>
+        <translation type="unfinished">Alpha</translation>
     </message>
     <message>
         <source>No history</source>
-        <translation>Keine Geschichte</translation>
+        <translation type="unfinished">Keine Geschichte</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Klar</translation>
+        <translation type="unfinished">Klar</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation>BS: </translation>
+        <translation type="unfinished">BS: </translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I found </source>
+        <translation type="unfinished">Ich fand </translation>
+    </message>
+    <message>
+        <source> with </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> using Sachesi </source>
+        <translation type="unfinished"> verwendung Sachesi </translation>
     </message>
 </context>
 <context>

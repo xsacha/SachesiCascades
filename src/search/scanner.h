@@ -15,6 +15,7 @@ class Scanner : public QObject {
     Q_PROPERTY(DiscoveredRelease* curRelease READ curRelease NOTIFY curReleaseChanged)
 
     Q_PROPERTY(bb::cascades::DataModel* history READ history NOTIFY historyChanged)
+    Q_PROPERTY(int historyCount READ historyCount NOTIFY historyChanged)
 public:
     Scanner()
     : QObject()
@@ -67,10 +68,12 @@ public:
     void setFindExisting(int findExisting) { _findExisting = findExisting; emit findExistingChanged(); }
 
     Q_INVOKABLE void clearHistory();
+    Q_INVOKABLE void exportHistory();
     Q_INVOKABLE void reverseLookup(QString OSver);
     Q_INVOKABLE void generatePotentialLinks();
 
     bool finishedScan() const { return _finishedScan; }
+    int historyCount() const { return _history.count(); }
 
 private slots:
     void newSRVersion();

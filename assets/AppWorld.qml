@@ -52,8 +52,8 @@ Page {
         Invocation {
             id: invokeShare
             query: InvokeQuery {
-                id:invokeQuery
-                mimeType: "text/plain"                        
+                id: invokeQuery
+                mimeType: "text/plain; charset=utf-8"
             }
             onArmed: {
                 if (invokeQuery.data != "") {
@@ -140,7 +140,6 @@ Page {
                     Button {
                         text: qsTr("Share") + Retranslate.onLocaleOrLanguageChanged
                         onClicked: {
-                            invokeQuery.mimeType = "text/plain; charset=utf-8"
                             invokeQuery.data = world.utf8Encode(qsTr("I found ") + world.contentItem.friendlyName + qsTr(" using Sachesi ") + qsTr("You can find it with") + " http://qtness.com/s?" + world.contentItem.id);
                             invokeQuery.updateQuery();
                         }

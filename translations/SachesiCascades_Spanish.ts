@@ -86,40 +86,80 @@
         <source>VersionLookup</source>
         <translation>VersiónBúsqueda</translation>
     </message>
+    <message>
+        <source>SR: </source>
+        <translation type="unfinished">SR: </translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation type="unfinished">SO: </translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation type="unfinished">Producción</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation type="unfinished">Beta</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation type="unfinished">Alfa</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished">Historia</translation>
+    </message>
 </context>
 <context>
     <name>ScannerHistory</name>
     <message>
         <source>Scan History</source>
-        <translation>Historia de Análisis</translation>
+        <translation type="unfinished">Historia de Análisis</translation>
     </message>
     <message>
         <source>SR: </source>
-        <translation>SR: </translation>
+        <translation type="unfinished">SR: </translation>
     </message>
     <message>
         <source>Production</source>
-        <translation>Producción</translation>
+        <translation type="unfinished">Producción</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation>Beta</translation>
+        <translation type="unfinished">Beta</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation>Alfa</translation>
+        <translation type="unfinished">Alfa</translation>
     </message>
     <message>
         <source>No history</source>
-        <translation>No hay historial</translation>
+        <translation type="unfinished">No hay historial</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Limpiar</translation>
+        <translation type="unfinished">Limpiar</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation>SO: </translation>
+        <translation type="unfinished">SO: </translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I found </source>
+        <translation type="unfinished">Encontré </translation>
+    </message>
+    <message>
+        <source> with </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> using Sachesi </source>
+        <translation type="unfinished"> utilizando Sachesi </translation>
     </message>
 </context>
 <context>

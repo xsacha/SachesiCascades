@@ -86,40 +86,80 @@
         <source>VersionLookup</source>
         <translation>版本查询</translation>
     </message>
+    <message>
+        <source>SR: </source>
+        <translation type="unfinished">发布：</translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation type="unfinished">系统：</translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation type="unfinished">产品版</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation type="unfinished">Beta版</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation type="unfinished">Alpha版</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished">历史</translation>
+    </message>
 </context>
 <context>
     <name>ScannerHistory</name>
     <message>
         <source>Scan History</source>
-        <translation>扫描历史记录</translation>
+        <translation type="unfinished">扫描历史记录</translation>
     </message>
     <message>
         <source>SR: </source>
-        <translation>发布：</translation>
+        <translation type="unfinished">发布：</translation>
     </message>
     <message>
         <source>Production</source>
-        <translation>产品版</translation>
+        <translation type="unfinished">产品版</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation>Beta版</translation>
+        <translation type="unfinished">Beta版</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation>Alpha版</translation>
+        <translation type="unfinished">Alpha版</translation>
     </message>
     <message>
         <source>No history</source>
-        <translation>没有历史</translation>
+        <translation type="unfinished">没有历史</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>消除</translation>
+        <translation type="unfinished">消除</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation>系统：</translation>
+        <translation type="unfinished">系统：</translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I found </source>
+        <translation type="unfinished">我发现</translation>
+    </message>
+    <message>
+        <source> with </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> using Sachesi </source>
+        <translation type="unfinished">使用Sachesi</translation>
     </message>
 </context>
 <context>

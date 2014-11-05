@@ -86,40 +86,80 @@
         <source>VersionLookup</source>
         <translation>Версияпоиск</translation>
     </message>
+    <message>
+        <source>SR: </source>
+        <translation type="unfinished">SR: </translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation type="unfinished">OC: </translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation type="unfinished">Производство</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation type="unfinished">бета</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation type="unfinished">Альфа</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished">История</translation>
+    </message>
 </context>
 <context>
     <name>ScannerHistory</name>
     <message>
         <source>Scan History</source>
-        <translation>История сканирования</translation>
+        <translation type="unfinished">История сканирования</translation>
     </message>
     <message>
         <source>SR: </source>
-        <translation>SR: </translation>
+        <translation type="unfinished">SR: </translation>
     </message>
     <message>
         <source>Production</source>
-        <translation>Производство</translation>
+        <translation type="unfinished">Производство</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation>бета</translation>
+        <translation type="unfinished">бета</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation>Альфа</translation>
+        <translation type="unfinished">Альфа</translation>
     </message>
     <message>
         <source>No history</source>
-        <translation>Нет истории</translation>
+        <translation type="unfinished">Нет истории</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>очищать</translation>
+        <translation type="unfinished">очищать</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation>OC: </translation>
+        <translation type="unfinished">OC: </translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I found </source>
+        <translation type="unfinished">я нашел </translation>
+    </message>
+    <message>
+        <source> with </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> using Sachesi </source>
+        <translation type="unfinished"> используя Sachesi </translation>
     </message>
 </context>
 <context>

@@ -86,40 +86,80 @@
         <source>VersionLookup</source>
         <translation>VersionRecherche</translation>
     </message>
+    <message>
+        <source>SR: </source>
+        <translation type="unfinished">SR: </translation>
+    </message>
+    <message>
+        <source>OS: </source>
+        <translation type="unfinished">OS: </translation>
+    </message>
+    <message>
+        <source>Production</source>
+        <translation type="unfinished">Production</translation>
+    </message>
+    <message>
+        <source>Beta</source>
+        <translation type="unfinished">Beta</translation>
+    </message>
+    <message>
+        <source>Alpha</source>
+        <translation type="unfinished">Alpha</translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished">Historique</translation>
+    </message>
 </context>
 <context>
     <name>ScannerHistory</name>
     <message>
         <source>Scan History</source>
-        <translation>Historique des Balayage</translation>
+        <translation type="unfinished">Historique des Balayage</translation>
     </message>
     <message>
         <source>SR: </source>
-        <translation>SR: </translation>
+        <translation type="unfinished">SR: </translation>
     </message>
     <message>
         <source>Production</source>
-        <translation>Production</translation>
+        <translation type="unfinished">Production</translation>
     </message>
     <message>
         <source>Beta</source>
-        <translation>Beta</translation>
+        <translation type="unfinished">Beta</translation>
     </message>
     <message>
         <source>Alpha</source>
-        <translation>Alpha</translation>
+        <translation type="unfinished">Alpha</translation>
     </message>
     <message>
         <source>No history</source>
-        <translation>Pas d&apos;historique</translation>
+        <translation type="unfinished">Pas d&apos;historique</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Nettoyer</translation>
+        <translation type="unfinished">Nettoyer</translation>
     </message>
     <message>
         <source>OS: </source>
-        <translation>OS: </translation>
+        <translation type="unfinished">OS: </translation>
+    </message>
+    <message>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I found </source>
+        <translation type="unfinished">J&apos;ai trouvé </translation>
+    </message>
+    <message>
+        <source> with </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> using Sachesi </source>
+        <translation type="unfinished"> utilisant Sachesi </translation>
     </message>
 </context>
 <context>

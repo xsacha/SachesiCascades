@@ -17,6 +17,7 @@ Page {
         },
         ActionItem {
             title: qsTr("Autoscan") + Retranslate.onLocaleOrLanguageChanged
+            enabled: scanner.historyCount
             imageSource: "asset:///radar.png"
             backgroundColor: scanner.isAuto ? ui.palette.primaryBase : ui.palette.plainBase
             property bool finished: scanner.finishedScan

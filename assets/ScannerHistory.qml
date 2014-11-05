@@ -9,7 +9,29 @@ Page {
         ActionItem {
             title: qsTr("Clear") + Retranslate.onLocaleOrLanguageChanged
             onTriggered: scanner.clearHistory();
+            enabled: scanner.historyCount
             ActionBar.placement: ActionBarPlacement.Signature
+        },
+        ActionItem {
+            title: qsTr("Export") + Retranslate.onLocaleOrLanguageChanged
+            imageSource: "asset:///history.png"
+            enabled: scanner.historyCount
+            onTriggered: scanner.exportHistory();
+            ActionBar.placement: ActionBarPlacement.OnBar
+        }
+    ]
+    attachedObjects: [
+        Invocation {
+            id: invokeShare
+            query: InvokeQuery {
+                id: invokeQuery
+                mimeType: "text/plain; charset=utf-8"
+            }
+            onArmed: {
+                if (invokeQuery.data != "") {
+                    trigger("bb.action.SHARE");
+                }
+            }
         }
     ]
     Container {
@@ -33,6 +55,11 @@ Page {
                     }
                 }
             ]
+            onTriggered: {
+                var chosenItem = dataModel.data(indexPath);
+                invokeQuery.setData(world.utf8Encode(qsTr("I found ") + qsTr("OS: ") + chosenItem.osVersion + qsTr(" with ") + qsTr("SR: ") + chosenItem.srVersion + qsTr(" using Sachesi ")));
+                invokeQuery.updateQuery();
+            }
         }
     }
     paneProperties: NavigationPaneProperties {

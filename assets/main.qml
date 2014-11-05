@@ -4,6 +4,7 @@ TabbedPane {
     id: root
     showTabsOnActionBar: false
     Menu.definition: TopMenu {}
+    // BBWorld
     Tab {
         objectName: "appTab"
         imageSource: "asset:///world.png"
