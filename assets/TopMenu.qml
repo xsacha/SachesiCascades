@@ -147,6 +147,18 @@ MenuDefinition {
                             },
                             Option {
                                 text: qsTr("Eval") + Retranslate.onLocaleOrLanguageChanged
+                            },
+                            Option {
+                                text: qsTr("Eval") + "2" + Retranslate.onLocaleOrLanguageChanged
+                            },
+                            Option {
+                                text: "AW46 Dev"
+                            },
+                            Option {
+                                text: "AW10 Dev"
+                            },
+                            Option {
+                                text: "AW33 Dev"
                             }
                         ]
                     }

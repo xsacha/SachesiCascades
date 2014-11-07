@@ -113,6 +113,14 @@ public:
 
     QString currentServer() {
         switch (_server) {
+            case 6:
+                return "http://dev3.store.blackberry.com"; //same as dev.
+            case 5:
+                return "http://dev2.store.blackberry.com";
+            case 4:
+                return "http://dev1.store.blackberry.com";
+            case 3:
+                return "http://origin-appworld.eval.blackberry.com";
             case 2:
                 return "http://eval.appworld.blackberry.com";
             case 1:
