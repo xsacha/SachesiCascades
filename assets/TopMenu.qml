@@ -83,22 +83,22 @@ MenuDefinition {
                         onSelectedIndexChanged: if (world.model != selectedIndex) world.model = selectedIndex
                         options: [
                             Option {
-                                text: "Passport"
+                                text: "BlackBerry Passport"
                             },
                             Option {
-                                text: "Q10"                                
+                                text: "BlackBerry Q10"
                             },
                             Option {
-                                text: "Z30"
+                                text: "BlackBerry Z30"
                             },
                             Option {
-                                text: "Z10 Qualcomm GPU"
+                                text: "BlackBerry Z10 Qualcomm GPU"
                             },
                             Option {
-                                text: "Z10 Imagination GPU"
+                                text: "BlackBerry Z10 Imagination GPU"
                             },
                             Option {
-                                text: "PlayBook"
+                                text: "BlackBerry PlayBook"
                             }
                         ]
                     }
