@@ -43,7 +43,7 @@ void Scanner::reverseLookup(QString OSver) {
     request.setRawHeader("Content-Type", "text/xml;charset=UTF-8");
     QStringList serverList = QStringList("cs.sl");
     if (_findExisting != 1) {
-        serverList << "beta2.sl.eval" << "alpha2.sl.eval";
+        serverList << "beta2.sl.eval" << "alpha.sl.eval";
     }
     _scansActive = serverList.count();
     foreach(QString server, serverList) {
@@ -146,9 +146,13 @@ void Scanner::generatePotentialLinks() {
     appendNewLink(&potentialText, "Debrick", "qc8960.factory_sfi_hybrid_qc8974.desktop", _curRelease->osVersion());
     appendNewLink(&potentialText, "Core",    "qc8960.factory_sfi_hybrid_qc8974", _curRelease->osVersion());
 
-    appendNewHeader(&potentialText, "QC8960", "Blackberry Z3/Z10/Z30/Q5/Q10");
+    appendNewHeader(&potentialText, "QC8960", "Blackberry Z10/Z30/Q5/Q10");
     appendNewLink(&potentialText, "Debrick", "qc8960.factory_sfi.desktop", _curRelease->osVersion());
     appendNewLink(&potentialText, "Core",    "qc8960.factory_sfi", _curRelease->osVersion());
+
+    appendNewHeader(&potentialText, "QC8X30", "Blackberry Z3");
+    appendNewLink(&potentialText, "Debrick", "qc8960.factory_sfi_hybrid_qc8x30.desktop", _curRelease->osVersion());
+    appendNewLink(&potentialText, "Core",    "qc8960.factory_sfi_hybrid_qc8x30", _curRelease->osVersion());
 
     appendNewHeader(&potentialText, "OMAP", "Blackberry Z10 STL 100-1");
     appendNewLink(&potentialText, "Debrick", "winchester.factory_sfi.desktop", _curRelease->osVersion());
@@ -159,10 +163,10 @@ void Scanner::generatePotentialLinks() {
     appendNewLink(&potentialText, "Z30 + Classic", "qc8960.wtr5", radioVersion);
     appendNewLink(&potentialText, "Z10 (STL 100-1)", "m5730", radioVersion);
     appendNewLink(&potentialText, "Z10 (STL 100-2/3/4) and Porsche P9982", "qc8960", radioVersion);
-    appendNewLink(&potentialText, "Z3 (Jakarta) + Cafe", "qc8930.wtr5", radioVersion);
+    appendNewLink(&potentialText, "Z3", "qc8930.wtr5", radioVersion);
     // QWERTY
-    appendNewLink(&potentialText, "Passport + Ontario", "qc8974.wtr2", radioVersion);
-    appendNewLink(&potentialText, "Q5 + Q10 + Khan", "qc8960.wtr", radioVersion);
+    appendNewLink(&potentialText, "Passport", "qc8974.wtr2", radioVersion);
+    appendNewLink(&potentialText, "Q5 + Q10", "qc8960.wtr", radioVersion);
     Utils().writeDisplayFile(tr("VersionLookup"), potentialText);
 }
 

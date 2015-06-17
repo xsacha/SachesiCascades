@@ -39,11 +39,11 @@
 
     <name>Sachesi</name>
 
-    <versionNumber>1.1.7</versionNumber>
+    <versionNumber>2.0.1</versionNumber>
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the
          <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->
-    <buildId>3</buildId>
+    <buildId>1</buildId>
 
     <!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
     <!-- <versionLabel></versionLabel> -->
@@ -61,7 +61,7 @@
        <image>icon-144.png</image>
     </icon>
     <platformVersion>10.3.0</platformVersion>
-    <authorId>gYAAgGE4qaHzBnzEAu8JKe4G1OI</authorId>
+    <authorId>gYAAgLEiI4zPCIfxB9BR_HpK4s0</authorId>
     <author>Qtness</author>
 
     <initialWindow>
@@ -90,7 +90,7 @@
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
     <env var="CASCADES_THEME" value="dark"/>
     
-    <invoke-target id="com.Qtness.Sachesi">
+    <invoke-target id="com.Qtness.SachesiCascades">
         <invoke-target-type>application</invoke-target-type>
 		<icon>
       		<image>icon.png</image>

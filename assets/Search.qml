@@ -56,7 +56,7 @@ NavigationPane {
                 source: "SearchScanner.qml"
             }
         ]
-        property string latestOS: "10.3.1.1016"
+        property string latestOS: "10.3.2.840"
         onCreationCompleted: {
             var http = new XMLHttpRequest()
             var url = "https://raw.githubusercontent.com/xsacha/Sachesi/master/carrier";
@@ -89,7 +89,7 @@ NavigationPane {
                 id: countryPicker
                 title: qsTr("Country") + Retranslate.onLocaleOrLanguageChanged
                 description: carrier.country == "" ? (qsTr("Unknown") + Retranslate.onLocaleOrLanguageChanged) : carrier.country
-                property int initialValue: 302
+                property int initialValue: 311
                 onSelectedValueChanged: carrier.mccChange(selectedValue)
                 onCreationCompleted: {
                     select(0, 10 + initialValue / 100);
@@ -109,7 +109,7 @@ NavigationPane {
                 id: carrierPicker
                 title: qsTr("Carrier") + Retranslate.onLocaleOrLanguageChanged
                 description: carrier.carrier == "" ? (qsTr("Unknown") + Retranslate.onLocaleOrLanguageChanged) : carrier.carrier
-                property int initialValue: 720
+                property int initialValue: 480
                 onSelectedValueChanged: carrier.mncChange(selectedValue)
                 onCreationCompleted: {
                     select(0, 10 + initialValue / 100);
@@ -141,11 +141,11 @@ NavigationPane {
             }
             DropDown {
                 id: deviceSelector
-                selectedIndex: 4
+                selectedIndex: 0
                 title: qsTr("Search Device") + Retranslate.onLocaleOrLanguageChanged
                 options: [
                     Option {
-                        text: "Z30"
+                        text: "Z30 + Classic + Leap"
                     },
                     Option {
                         text: "Z10 STL 100-1"
@@ -160,7 +160,7 @@ NavigationPane {
                         text: "Passport"
                     },
                     Option {
-                        text: "Q5 + Q10"                    
+                        text: "Q5 + Q10"                
                     }
                 ]
                 margin {

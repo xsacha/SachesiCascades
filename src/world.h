@@ -11,10 +11,10 @@
 #include <bb/system/SystemToast>
 #include <bb/data/JsonDataAccess>
 #include <bb/system/InvokeRequest>
+#include <bb/system/InvokeReply>
 #include "worldapps.h"
 
 // TODO: Use cas for the download page. Maybe Search too?
-// Need git revision before this happens so we can revert back if things go awry
 
 class AppWorld : public QObject
 {
@@ -35,7 +35,7 @@ public:
     , _listing(false)
     , _more()
     , _server(0)
-    , _model(0)
+    , _model(0) // Try to turn this in to 3 if it's a qwerty device
     , _osVer(0)
     {
         _manager = new QNetworkAccessManager();

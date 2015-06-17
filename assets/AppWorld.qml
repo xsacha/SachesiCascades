@@ -145,6 +145,7 @@ Page {
                         }
                     }
                     Button {
+                        visible: false
                         text: qsTr("Download") + Retranslate.onLocaleOrLanguageChanged
                         onClicked: world.download(world.contentItem.id)
                     }

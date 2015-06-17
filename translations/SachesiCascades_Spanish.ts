@@ -88,7 +88,7 @@
     </message>
     <message>
         <source>SR: </source>
-        <translation>SR: </translation>
+        <translation type="unfinished">VS: </translation>
     </message>
     <message>
         <source>OS: </source>
@@ -291,7 +291,7 @@
     </message>
     <message>
         <source>Found: </source>
-        <translation>Encontrado: </translation>
+        <translation type="unfinished">Encontrado: </translation>
     </message>
     <message>
         <source>Generate Links</source>
@@ -323,7 +323,7 @@
     </message>
     <message>
         <source>Stop on:</source>
-        <translation>Deje en:</translation>
+        <translation type="unfinished">Detener en:</translation>
     </message>
     <message>
         <source>Next Found</source>
